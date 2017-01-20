@@ -1,0 +1,72 @@
+##Data S1: Estimated euchromatin, heterochromatin, and centromere locations in tomato chromosomes.
+##gff-version 3
+##sequence regions in S. lycopersicum Heinz assembly version 2.50 (GCF_000188115.3)
+##Fields:
+##1 seqname: chromosome name
+##2 source
+##3 feature: Euchromatin, Heterochromatin or centromere
+##4 start
+##5 end
+##6 score
+##7 strand
+##8 frame
+##9 attribute
+SL2.50ch01	.	Euchromatin	1	5125550	.	.	.	.
+SL2.50ch01	.	Heterochromatin	5125550	35376696	.	.	.	.
+SL2.50ch01	.	centromere	35376695	35376696	.	.	.	.
+SL2.50ch01	.	Heterochromatin	35376696	74193376	.	.	.	.
+SL2.50ch01	.	Euchromatin	74193376	98543444	.	.	.	.
+SL2.50ch02	.	centromere	1	1	.	.	.	.
+SL2.50ch02	.	Heterochromatin	1	31997432	.	.	.	.
+SL2.50ch02	.	Euchromatin	31997432	55340444	.	.	.	.
+SL2.50ch03	.	Euchromatin	1	4449513	.	.	.	.
+SL2.50ch03	.	Heterochromatin	4449513	19453686	.	.	.	.
+SL2.50ch03	.	centromere	19453685	19453686	.	.	.	.
+SL2.50ch03	.	Heterochromatin	19453686	53381452	.	.	.	.
+SL2.50ch03	.	Euchromatin	53381452	70787664	.	.	.	.
+SL2.50ch04	.	Euchromatin	1	4702190	.	.	.	.
+SL2.50ch04	.	Heterochromatin	4702190	19939328	.	.	.	.
+SL2.50ch04	.	centromere	19939327	19939328	.	.	.	.
+SL2.50ch04	.	Heterochromatin	19939328	52703023	.	.	.	.
+SL2.50ch04	.	Euchromatin	52703023	66470942	.	.	.	.
+SL2.50ch05	.	Euchromatin	1	6737988	.	.	.	.
+SL2.50ch05	.	Heterochromatin	6737988	31622521	.	.	.	.
+SL2.50ch05	.	centromere	31622520	31622521	.	.	.	.
+SL2.50ch05	.	Heterochromatin	31622521	59038412	.	.	.	.
+SL2.50ch05	.	Euchromatin	59038412	65875088	.	.	.	.
+SL2.50ch06	.	Euchromatin	1	2920225	.	.	.	.
+SL2.50ch06	.	Heterochromatin	2920225	14415601	.	.	.	.
+SL2.50ch06	.	centromere	14415600	14415601	.	.	.	.
+SL2.50ch06	.	Heterochromatin	14415601	34998524	.	.	.	.
+SL2.50ch06	.	Euchromatin	34998524	49751636	.	.	.	.
+SL2.50ch07	.	Euchromatin	1	5103862	.	.	.	.
+SL2.50ch07	.	Heterochromatin	5103862	26048607	.	.	.	.
+SL2.50ch07	.	centromere	26048606	26048607	.	.	.	.
+SL2.50ch07	.	Heterochromatin	26048607	57105417	.	.	.	.
+SL2.50ch07	.	Euchromatin	57105417	68045021	.	.	.	.
+SL2.50ch08	.	Euchromatin	1	4212766	.	.	.	.
+SL2.50ch08	.	Heterochromatin	4212766	22443695	.	.	.	.
+SL2.50ch08	.	centromere	22443694	22443695	.	.	.	.
+SL2.50ch08	.	Heterochromatin	22443695	53590189	.	.	.	.
+SL2.50ch08	.	Euchromatin	53590189	65866657	.	.	.	.
+SL2.50ch09	.	Euchromatin	1	4709143	.	.	.	.
+SL2.50ch09	.	Heterochromatin	4709143	28373151	.	.	.	.
+SL2.50ch09	.	centromere	28373150	28373151	.	.	.	.
+SL2.50ch09	.	Heterochromatin	28373151	62844266	.	.	.	.
+SL2.50ch09	.	Euchromatin	62844266	72482091	.	.	.	.
+SL2.50ch10	.	Euchromatin	1	3971423	.	.	.	.
+SL2.50ch10	.	Heterochromatin	3971423	23536078	.	.	.	.
+SL2.50ch10	.	centromere	23536077	23536078	.	.	.	.
+SL2.50ch10	.	Heterochromatin	23536078	55455388	.	.	.	.
+SL2.50ch10	.	Euchromatin	55455388	65527505	.	.	.	.
+SL2.50ch11	.	Euchromatin	1	6346950	.	.	.	.
+SL2.50ch11	.	Heterochromatin	6346950	24067925	.	.	.	.
+SL2.50ch11	.	centromere	24067924	24067925	.	.	.	.
+SL2.50ch11	.	Heterochromatin	24067925	49320075	.	.	.	.
+SL2.50ch11	.	Euchromatin	49320075	56302525	.	.	.	.
+SL2.50ch12	.	Euchromatin	1	6387711	.	.	.	.
+SL2.50ch12	.	Heterochromatin	6387711	31525904	.	.	.	.
+SL2.50ch12	.	centromere	31525903	31525904	.	.	.	.
+SL2.50ch12	.	Heterochromatin	31525904	60809985	.	.	.	.
+SL2.50ch12	.	Euchromatin	60809985	67145203	.	.	.	.
+
