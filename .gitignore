@@ -1,0 +1,7 @@
+.ipynb_checkpoints/
+
+mnist_out/
+mnist_in/
+
+tensorflow_speech_recognition_demo/data/
+*.pyc

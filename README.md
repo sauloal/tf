@@ -1,5 +1,7 @@
 # TensorFlow Tutorial
 
+#https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/3_NeuralNetworks/bidirectional_rnn.ipynb
+
 Welcome to the TensorFlow Tutorial.
 
 Please install TensorFlow on your computer before you arrive.
