@@ -8,7 +8,7 @@ mkdir -p data/validate/triangles
 python create.py
 
 #copy training set
-mv data/train/squares/data3*  data/validate/squares/.
+mv data/train/squares/data3*    data/validate/squares/.
 mv data/train/triangles/data3*  data/validate/triangles/.
 
 cd data
@@ -34,3 +34,4 @@ if [[ ! -f "shapesorter.py" ]]; then
 	wget https://agray3.github.io/files/shapesorter.py
 fi
 
+python shapesorter.py | tee log.log

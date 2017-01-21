@@ -7,6 +7,7 @@ nClass=2
 
 # Simple model (set to True) or convolutional neural network (set to False)
 simpleModel=True
+simpleModel=False
 
 # Dimensions of image (pixels)
 height=32
