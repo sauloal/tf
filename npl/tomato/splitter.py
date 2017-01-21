@@ -2,11 +2,27 @@
 
 import os
 import sys
+import math
 from collections import defaultdict, OrderedDict
 
-NAME_PADDING_LEN=20
-DEFAULT_BLOCK_SIZE=50000
-DEFAULT_OUT_DIR="data"
+NAME_PADDING_LEN   =    20
+DEFAULT_BLOCK_SIZE = 50000
+DEFAULT_OUT_DIR    = "data"
+
+replacer = {
+	'A': chr(int(math.pow(2, 7))),
+	'a': chr(int(math.pow(2, 7))),
+	'C': chr(int(math.pow(2, 5))),
+	'c': chr(int(math.pow(2, 5))),
+	'G': chr(int(math.pow(2, 3))),
+	'g': chr(int(math.pow(2, 3))),
+	'T': chr(int(math.pow(2, 1))),
+	't': chr(int(math.pow(2, 1))),
+}
+
+#print replacer
+#print [(k,ord(r)) for k, r in replacer.iteritems()]
+#quit()
 
 def parseGff(inGff):
 	gff = defaultdict(OrderedDict)
@@ -82,8 +98,11 @@ def parseSeq(seqName, seq, gff, stats, block_size=DEFAULT_BLOCK_SIZE, out_dir=DE
 						assert len(frag) == block_size
 						outfile = "{}_{:012d}_{:012d}_{:012d}.seq".format( out_base_path, bn, s, e )
 						print "   #{:12,d} begin {:12,d} end {:12,d} size {:12,d} total {:12,d} file {}".format(bn, s, e, l, total, outfile)
-						open(outfile, 'w').write(frag)
+						open(outfile, 'w').write(toOneHot(frag))
 				#break
+
+def toOneHot(frag):
+	return "".join([replacer.get(f, '\x00') for f in frag])
 
 def splitFasta(inGff, inFas, block_size=DEFAULT_BLOCK_SIZE, out_dir=DEFAULT_OUT_DIR):
 	gff = parseGff(inGff)
