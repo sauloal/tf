@@ -5,3 +5,4 @@ mnist_in/
 
 tensorflow_speech_recognition_demo/data/
 *.pyc
+*.swp
