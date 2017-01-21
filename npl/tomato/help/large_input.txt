@@ -1,0 +1,197 @@
+#https://ischlag.github.io/2016/11/07/tensorflow-input-pipeline-for-large-datasets/
+
+scribble
+Imanol Schlag
+
+Blog  About  GitHub  RSS
+
+7 NOVEMBER 2016
+TENSORFLOW INPUT PIPELINE FOR LARGE DATASETS
+
+TL;DR;
+
+A more advanced example compared to this earlier post on input pipelines in TensorFlow. This post 
+is about a toy example which shows how to use a FIFOQueue in order to create an input pipeline that 
+will also work with big datasets. There might still be room for improvements. Please let me know if 
+you have some ideas.
+
+Context
+
+I’m using TensorFlow 0.11 but other versions should work just fine. This is a toy example but 
+later I’ll also add a real example using SVHN or imagenet later on. TensorFlow makes it really 
+easy to read data from TFRecords files i.e. TensorFlows own data format. If you can convert your 
+data into this binary format you might want to consider this as it will make it easier to deal 
+with. However, we’re not going to that here. In this examples we are going to use two queues. One 
+will be fed imagepaths and labels by our own enqueue functions reading from a numpy array (or file 
+if you wish). The second one is hidden inside tf.train.batch which will dequeue samples from our 
+first queue, load the image, do some processing and build batches.
+
+Load the Data
+
+For this example we are creating a dataset for the purpose of demonstraion. This numpy data will 
+fit into our working memory (RAM). But instead of reading from a numpy array you could easily 
+change it to read directly from a file if you can’t fit the whole dataset into your working 
+memory.
+
+import tensorflow as tf
+import numpy as np
+import threading
+
+r = np.arange(0.0,100003.0)
+raw_data = np.dstack((r,r,r,r))[0]
+raw_target = np.array([[1,0,0]] * 100003)
+Build an FIFOQueue
+
+From our numpy data we’ll read multiple samples at once and push them into our FIFOQueue. For 
+this purpose we need to create placeholders to hold this small junks of data, the queue itself, and 
+an enqueue and dequeue operation. The enqueue_many functions adds multiple samples at once. In this 
+case we enqueue a bunch and dequeue one sample at the time.
+
+queue_input_data = tf.placeholder(tf.float32, shape=[20, 4])
+queue_input_target = tf.placeholder(tf.float32, shape=[20, 3])
+
+queue = tf.FIFOQueue(capacity=50, dtypes=[tf.float32, tf.float32], shapes=[[4], [3]])
+
+enqueue_op = queue.enqueue_many([queue_input_data, queue_input_target])
+dequeue_op = queue.dequeue()
+Now we can already continue building our input pipeline as we did in the prior blog post. After 
+performing some preprocessing on the dequeued data we can group them into a batch and use a session 
+in order to draw the next batch of samples from our input pipeline. But before we can do that, we 
+have to start a thread that will fill our queue object by calling queue.enqueue_many with data from 
+our numpy data. Here, instead of reading from our simple numpy data array you could also access a 
+database, a network source, or a big file which you cannot load fully into memory. Notice that I 
+loop endlessly in order to keep up a stream of incoming data. Don’t worry about shuffeling here 
+you can use tf.train.shuffle_batch instead of tf.train.batch.
+
+# tensorflow recommendation:
+# capacity = min_after_dequeue + (num_threads + a small safety margin) * batch_size
+data_batch, target_batch = tf.train.batch(dequeue_op, batch_size=15, capacity=40)
+Start the Threads
+
+Now the only thing that is missing are the queue runner threads for our tf.train.batch.
+
+def enqueue(sess):
+  under = 0
+  max = len(raw_data)
+  while True:
+    print("starting to write into queue")
+    upper = under + 20
+    print("try to enqueue ", under, " to ", upper)
+    if upper <= max:
+      curr_data = raw_data[under:upper]
+      curr_target = raw_target[under:upper]
+      under = upper
+    else:
+      rest = upper - max
+      curr_data = np.concatenate((raw_data[under:max], raw_data[0:rest]))
+      curr_target = np.concatenate((raw_target[under:max], raw_target[0:rest]))
+      under = rest
+
+    sess.run(enqueue_op, feed_dict={queue_input_data: curr_data,
+                                    queue_input_target: curr_target})
+    print("added to the queue")
+  print("finished enqueueing")
+
+sess = tf.Session()
+enqueue_thread = threading.Thread(target=enqueue, args=[sess])
+enqueue_thread.isDaemon()
+enqueue_thread.start()
+
+coord = tf.train.Coordinator()
+threads = tf.train.start_queue_runners(coord=coord, sess=sess)
+Now, the next batch for our model should be ready and already waiting for us. All we have to do is 
+the following. (The run_options are not necessary but will produce a timeout in case something went 
+wrong beforehand.)
+
+run_options = tf.RunOptions(timeout_in_ms=4000)
+curr_data_batch, curr_target_batch = sess.run([data_batch, target_batch], options=run_options)
+print(curr_data_batch)
+Once we are done with our input pipeline we should stop all running threads before closing the 
+session.
+
+sess.run(queue.close(cancel_pending_enqueues=True))
+coord.request_stop()
+coord.join(threads)
+sess.close()
+When you run this script and close the queue in the end it is possible that you get Enqueue 
+operation was cancelled errors. This has to do with closing the queues while some threads still 
+seem to be operating. However, if you do it like this no threads will survive and use up your GPU 
+memory. If you run into weird CUDA memory errors, have a look at the running processes and make 
+sure there is no zombie thread from your last run.
+
+As always, thanks for reading and here is the full code example:
+
+# TensorFlow Input Pipelines for Large Data Sets
+# ischlag.github.io
+# TensorFlow 0.11, 07.11.2016
+
+import tensorflow as tf
+import numpy as np
+import threading
+
+# Generating some simple data
+r = np.arange(0.0,100003.0)
+raw_data = np.dstack((r,r,r,r))[0]
+raw_target = np.array([[1,0,0]] * 100003)
+
+# are used to feed data into our queue
+queue_input_data = tf.placeholder(tf.float32, shape=[20, 4])
+queue_input_target = tf.placeholder(tf.float32, shape=[20, 3])
+
+queue = tf.FIFOQueue(capacity=50, dtypes=[tf.float32, tf.float32], shapes=[[4], [3]])
+
+enqueue_op = queue.enqueue_many([queue_input_data, queue_input_target])
+dequeue_op = queue.dequeue()
+
+# tensorflow recommendation:
+# capacity = min_after_dequeue + (num_threads + a small safety margin) * batch_size
+data_batch, target_batch = tf.train.batch(dequeue_op, batch_size=15, capacity=40)
+# use this to shuffle batches:
+# data_batch, target_batch = tf.train.shuffle_batch(dequeue_op, batch_size=15, capacity=40, 
+min_after_dequeue=5)
+
+def enqueue(sess):
+  """ Iterates over our data puts small junks into our queue."""
+  under = 0
+  max = len(raw_data)
+  while True:
+    print("starting to write into queue")
+    upper = under + 20
+    print("try to enqueue ", under, " to ", upper)
+    if upper <= max:
+      curr_data = raw_data[under:upper]
+      curr_target = raw_target[under:upper]
+      under = upper
+    else:
+      rest = upper - max
+      curr_data = np.concatenate((raw_data[under:max], raw_data[0:rest]))
+      curr_target = np.concatenate((raw_target[under:max], raw_target[0:rest]))
+      under = rest
+
+    sess.run(enqueue_op, feed_dict={queue_input_data: curr_data,
+                                    queue_input_target: curr_target})
+    print("added to the queue")
+  print("finished enqueueing")
+
+# start the threads for our FIFOQueue and batch
+sess = tf.Session()
+enqueue_thread = threading.Thread(target=enqueue, args=[sess])
+enqueue_thread.isDaemon()
+enqueue_thread.start()
+
+coord = tf.train.Coordinator()
+threads = tf.train.start_queue_runners(coord=coord, sess=sess)
+
+# Fetch the data from the pipeline and put it where it belongs (into your model)
+for i in range(5):
+  run_options = tf.RunOptions(timeout_in_ms=4000)
+  curr_data_batch, curr_target_batch = sess.run([data_batch, target_batch], options=run_options)
+  print(curr_data_batch)
+
+# shutdown everything to avoid zombies
+sess.run(queue.close(cancel_pending_enqueues=True))
+coord.request_stop()
+coord.join(threads)
+sess.close()
+Blog  About  GitHub  RSS
+built with Jekyll using Scribble theme
