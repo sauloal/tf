@@ -34,15 +34,16 @@ def parseGff(inGff):
 			print line
 			#SL2.50ch10      .       Euchromatin     55455388        65527505        .       .       .       .
 			chrom, tp, cls, start, end = line.split("\t")[:5]
-			cls = cls.replace(" ", "_")
+			cls        = cls.replace(" ", "_")
 			start, end = int(start), int(end)
 			gff[chrom][(start, end)] = cls
 	#print gff
 	return gff
 
 def paseFasta(inFas, gff, block_size=DEFAULT_BLOCK_SIZE, out_dir=DEFAULT_OUT_DIR):
-	stats = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+	stats     = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
 	filenames = []
+
 	with open(inFas, 'r') as fhd:
 		seqName = None
 		seq     = None
@@ -69,11 +70,24 @@ def paseFasta(inFas, gff, block_size=DEFAULT_BLOCK_SIZE, out_dir=DEFAULT_OUT_DIR
 			for k3, v in sorted(c2.iteritems()):
 				print "    {:20s}: {:12,d}".format(k3,v)
 
-	out_csv = os.path.join(out_dir, "files.csv")
-	print "printing CSV {}".format(out_csv)
-	with open(out_csv, "w") as fhd:
-		for fn in filenames:
-			fhd.write(",".join(fn) + "\n")
+
+	outs = {
+		"all": [ os.path.join(out_dir, "files.csv"), None ]
+	}
+
+	for cls in stats['by_class']:
+		outs[ cls ] = [ os.path.join(out_dir, "files_"+cls+".csv"), None ]
+
+	for cls, (fn, n) in outs.iteritems():
+		print "printing CSV {} for class {}".format(fn, cls)
+		outs[ cls ][1] = open( fn, 'w' )
+
+	for fn, cls in filenames:
+		outs['all'][1].write(",".join((fn,cls)) + "\n")
+		outs[cls  ][1].write(",".join((fn,cls)) + "\n")
+
+	for cls in outs:
+		outs[ cls ][1].close()
 
 def parseSeq(seqName, seq, gff, stats, filenames, block_size=DEFAULT_BLOCK_SIZE, out_dir=DEFAULT_OUT_DIR):
 	if seqName is None: return
@@ -101,7 +115,7 @@ def parseSeq(seqName, seq, gff, stats, filenames, block_size=DEFAULT_BLOCK_SIZE,
 					e    = s + block_size
 					l    = e - s
 					if e <= end:
-						frag = seq[s:e]
+						frag     = seq[s:e]
 						assert len(frag) == block_size
 						basename = "{}_{:012d}_{:012d}_{:012d}.seq".format( out_base_name, bn, s, e )
 						subdir   = os.path.join(out_dir, cls     )

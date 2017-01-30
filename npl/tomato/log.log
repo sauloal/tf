@@ -16258,4 +16258,6 @@ Stats
     SL2.50ch10          :       33,965
     SL2.50ch11          :       23,125
     SL2.50ch12          :       72,274
-printing CSV data/files.csv
+printing CSV data/files.csv for class all
+printing CSV data/files_Euchromatin.csv for class Euchromatin
+printing CSV data/files_Heterochromatin.csv for class Heterochromatin
