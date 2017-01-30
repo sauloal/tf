@@ -10,14 +10,14 @@ DEFAULT_BLOCK_SIZE = 50000
 DEFAULT_OUT_DIR    = "data"
 
 replacer = {
-	'A': chr(int(math.pow(2, 7))),
-	'a': chr(int(math.pow(2, 7))),
-	'C': chr(int(math.pow(2, 5))),
-	'c': chr(int(math.pow(2, 5))),
-	'G': chr(int(math.pow(2, 3))),
-	'g': chr(int(math.pow(2, 3))),
-	'T': chr(int(math.pow(2, 1))),
-	't': chr(int(math.pow(2, 1))),
+	'A': chr(int(math.pow(2, 1))),
+	'a': chr(int(math.pow(2, 1))),
+	'C': chr(int(math.pow(2, 3))),
+	'c': chr(int(math.pow(2, 3))),
+	'G': chr(int(math.pow(2, 5))),
+	'g': chr(int(math.pow(2, 5))),
+	'T': chr(int(math.pow(2, 7))),
+	't': chr(int(math.pow(2, 7))),
 }
 
 #print replacer
@@ -42,6 +42,7 @@ def parseGff(inGff):
 
 def paseFasta(inFas, gff, block_size=DEFAULT_BLOCK_SIZE, out_dir=DEFAULT_OUT_DIR):
 	stats = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+	filenames = []
 	with open(inFas, 'r') as fhd:
 		seqName = None
 		seq     = None
@@ -51,13 +52,13 @@ def paseFasta(inFas, gff, block_size=DEFAULT_BLOCK_SIZE, out_dir=DEFAULT_OUT_DIR
 			if line[0] == ">":
 				if seqName is not None:
 					if seqName in gff:
-						parseSeq(seqName, seq, gff, stats, block_size=block_size, out_dir=out_dir)
+						parseSeq(seqName, seq, gff, stats, filenames, block_size=block_size, out_dir=out_dir)
 						#break
 				seqName = line[1:].split()[0]
 				seq     = []
 			else:
 				seq.append(line)
-		parseSeq(seqName, seq, gff, stats, block_size=block_size, out_dir=out_dir)
+		parseSeq(seqName, seq, gff, stats, filenames, block_size=block_size, out_dir=out_dir)
 
 	print
 	print "Stats"
@@ -68,12 +69,22 @@ def paseFasta(inFas, gff, block_size=DEFAULT_BLOCK_SIZE, out_dir=DEFAULT_OUT_DIR
 			for k3, v in sorted(c2.iteritems()):
 				print "    {:20s}: {:12,d}".format(k3,v)
 
-def parseSeq(seqName, seq, gff, stats, block_size=DEFAULT_BLOCK_SIZE, out_dir=DEFAULT_OUT_DIR):
+	out_csv = os.path.join(out_dir, "files.csv")
+	print "printing CSV {}".format(out_csv)
+	with open(out_csv, "w") as fhd:
+		for fn in filenames:
+			fhd.write(",".join(fn) + "\n")
+
+def parseSeq(seqName, seq, gff, stats, filenames, block_size=DEFAULT_BLOCK_SIZE, out_dir=DEFAULT_OUT_DIR):
 	if seqName is None: return
 	if seq     is None: return
 	if len(seq) == 0: return
 	seq   = "".join(seq)
 	total = len(seq)
+
+	if not os.path.exists(out_dir):
+		os.makedirs(out_dir)
+
 	print "Chrom {} Length {:12,d}".format(seqName, len(seq)), ("*" if seqName in gff else "")
 	if seqName in gff:
 		coords = gff[seqName]
@@ -84,20 +95,22 @@ def parseSeq(seqName, seq, gff, stats, block_size=DEFAULT_BLOCK_SIZE, out_dir=DE
 			if size > 1:
 				stats['by_chrom'][seqName][cls] += num_blocks
 				stats['by_class'][cls][seqName] += num_blocks
-				out_path = os.path.join(out_dir, cls)
-				if not os.path.exists(out_path):
-					os.makedirs(out_path)
 				out_base_name = ("{:_<"+str(NAME_PADDING_LEN)+"s}_{:012d}_{:012d}").format(seqName, start, end)
-				out_base_path = os.path.join(out_path, out_base_name)
-				print "  out path {} seq name {}".format( out_path, out_base_name )
+				print "  class {} seq name {}".format( cls, out_base_name )
 				for bn, s in enumerate(xrange(start, end, block_size)):
 					e    = s + block_size
 					l    = e - s
 					if e <= end:
 						frag = seq[s:e]
 						assert len(frag) == block_size
-						outfile = "{}_{:012d}_{:012d}_{:012d}.seq".format( out_base_path, bn, s, e )
+						basename = "{}_{:012d}_{:012d}_{:012d}.seq".format( out_base_name, bn, s, e )
+						subdir   = os.path.join(out_dir, cls     )
+						filename = os.path.join(cls    , basename)
+						outfile  = os.path.join(subdir , basename)
+						if not os.path.exists(subdir):
+							os.makedirs(subdir)
 						print "   #{:12,d} begin {:12,d} end {:12,d} size {:12,d} total {:12,d} file {}".format(bn, s, e, l, total, outfile)
+						filenames.append((filename, cls))
 						open(outfile, 'w').write(toOneHot(frag))
 				#break
 

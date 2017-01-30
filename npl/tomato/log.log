@@ -58,7 +58,7 @@ SL2.50ch12	.	Heterochromatin	31525904	60809985	.	.	.	.
 SL2.50ch12	.	Euchromatin	60809985	67145203	.	.	.	.
 Chrom SL2.50ch01 Length   98,543,444 *
  Start            1 End    5,125,550 Size    5,125,549 Blocks       25,549 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch01___________000000000001_000005125550
+  class Euchromatin seq name SL2.50ch01___________000000000001_000005125550
    #           0 begin            1 end       50,001 size       50,000 total   98,543,444 file data/Euchromatin/SL2.50ch01___________000000000001_000005125550_000000000000_000000000001_000000050001.seq
    #           1 begin       50,001 end      100,001 size       50,000 total   98,543,444 file data/Euchromatin/SL2.50ch01___________000000000001_000005125550_000000000001_000000050001_000000100001.seq
    #           2 begin      100,001 end      150,001 size       50,000 total   98,543,444 file data/Euchromatin/SL2.50ch01___________000000000001_000005125550_000000000002_000000100001_000000150001.seq
@@ -162,7 +162,7 @@ Chrom SL2.50ch01 Length   98,543,444 *
    #         100 begin    5,000,001 end    5,050,001 size       50,000 total   98,543,444 file data/Euchromatin/SL2.50ch01___________000000000001_000005125550_000000000100_000005000001_000005050001.seq
    #         101 begin    5,050,001 end    5,100,001 size       50,000 total   98,543,444 file data/Euchromatin/SL2.50ch01___________000000000001_000005125550_000000000101_000005050001_000005100001.seq
  Start    5,125,550 End   35,376,696 Size   30,251,146 Blocks        1,146 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch01___________000005125550_000035376696
+  class Heterochromatin seq name SL2.50ch01___________000005125550_000035376696
    #           0 begin    5,125,550 end    5,175,550 size       50,000 total   98,543,444 file data/Heterochromatin/SL2.50ch01___________000005125550_000035376696_000000000000_000005125550_000005175550.seq
    #           1 begin    5,175,550 end    5,225,550 size       50,000 total   98,543,444 file data/Heterochromatin/SL2.50ch01___________000005125550_000035376696_000000000001_000005175550_000005225550.seq
    #           2 begin    5,225,550 end    5,275,550 size       50,000 total   98,543,444 file data/Heterochromatin/SL2.50ch01___________000005125550_000035376696_000000000002_000005225550_000005275550.seq
@@ -770,7 +770,7 @@ Chrom SL2.50ch01 Length   98,543,444 *
    #         604 begin   35,325,550 end   35,375,550 size       50,000 total   98,543,444 file data/Heterochromatin/SL2.50ch01___________000005125550_000035376696_000000000604_000035325550_000035375550.seq
  Start   35,376,695 End   35,376,696 Size            1 Blocks            1 Class centromere           
  Start   35,376,696 End   74,193,376 Size   38,816,680 Blocks       16,680 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch01___________000035376696_000074193376
+  class Heterochromatin seq name SL2.50ch01___________000035376696_000074193376
    #           0 begin   35,376,696 end   35,426,696 size       50,000 total   98,543,444 file data/Heterochromatin/SL2.50ch01___________000035376696_000074193376_000000000000_000035376696_000035426696.seq
    #           1 begin   35,426,696 end   35,476,696 size       50,000 total   98,543,444 file data/Heterochromatin/SL2.50ch01___________000035376696_000074193376_000000000001_000035426696_000035476696.seq
    #           2 begin   35,476,696 end   35,526,696 size       50,000 total   98,543,444 file data/Heterochromatin/SL2.50ch01___________000035376696_000074193376_000000000002_000035476696_000035526696.seq
@@ -1548,7 +1548,7 @@ Chrom SL2.50ch01 Length   98,543,444 *
    #         774 begin   74,076,696 end   74,126,696 size       50,000 total   98,543,444 file data/Heterochromatin/SL2.50ch01___________000035376696_000074193376_000000000774_000074076696_000074126696.seq
    #         775 begin   74,126,696 end   74,176,696 size       50,000 total   98,543,444 file data/Heterochromatin/SL2.50ch01___________000035376696_000074193376_000000000775_000074126696_000074176696.seq
  Start   74,193,376 End   98,543,444 Size   24,350,068 Blocks           68 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch01___________000074193376_000098543444
+  class Euchromatin seq name SL2.50ch01___________000074193376_000098543444
    #           0 begin   74,193,376 end   74,243,376 size       50,000 total   98,543,444 file data/Euchromatin/SL2.50ch01___________000074193376_000098543444_000000000000_000074193376_000074243376.seq
    #           1 begin   74,243,376 end   74,293,376 size       50,000 total   98,543,444 file data/Euchromatin/SL2.50ch01___________000074193376_000098543444_000000000001_000074243376_000074293376.seq
    #           2 begin   74,293,376 end   74,343,376 size       50,000 total   98,543,444 file data/Euchromatin/SL2.50ch01___________000074193376_000098543444_000000000002_000074293376_000074343376.seq
@@ -2039,7 +2039,7 @@ Chrom SL2.50ch01 Length   98,543,444 *
 Chrom SL2.50ch02 Length   55,340,444 *
  Start            1 End            1 Size            0 Blocks            0 Class centromere           
  Start            1 End   31,997,432 Size   31,997,431 Blocks       47,431 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch02___________000000000001_000031997432
+  class Heterochromatin seq name SL2.50ch02___________000000000001_000031997432
    #           0 begin            1 end       50,001 size       50,000 total   55,340,444 file data/Heterochromatin/SL2.50ch02___________000000000001_000031997432_000000000000_000000000001_000000050001.seq
    #           1 begin       50,001 end      100,001 size       50,000 total   55,340,444 file data/Heterochromatin/SL2.50ch02___________000000000001_000031997432_000000000001_000000050001_000000100001.seq
    #           2 begin      100,001 end      150,001 size       50,000 total   55,340,444 file data/Heterochromatin/SL2.50ch02___________000000000001_000031997432_000000000002_000000100001_000000150001.seq
@@ -2680,7 +2680,7 @@ Chrom SL2.50ch02 Length   55,340,444 *
    #         637 begin   31,850,001 end   31,900,001 size       50,000 total   55,340,444 file data/Heterochromatin/SL2.50ch02___________000000000001_000031997432_000000000637_000031850001_000031900001.seq
    #         638 begin   31,900,001 end   31,950,001 size       50,000 total   55,340,444 file data/Heterochromatin/SL2.50ch02___________000000000001_000031997432_000000000638_000031900001_000031950001.seq
  Start   31,997,432 End   55,340,444 Size   23,343,012 Blocks       43,012 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch02___________000031997432_000055340444
+  class Euchromatin seq name SL2.50ch02___________000031997432_000055340444
    #           0 begin   31,997,432 end   32,047,432 size       50,000 total   55,340,444 file data/Euchromatin/SL2.50ch02___________000031997432_000055340444_000000000000_000031997432_000032047432.seq
    #           1 begin   32,047,432 end   32,097,432 size       50,000 total   55,340,444 file data/Euchromatin/SL2.50ch02___________000031997432_000055340444_000000000001_000032047432_000032097432.seq
    #           2 begin   32,097,432 end   32,147,432 size       50,000 total   55,340,444 file data/Euchromatin/SL2.50ch02___________000031997432_000055340444_000000000002_000032097432_000032147432.seq
@@ -3149,7 +3149,7 @@ Chrom SL2.50ch02 Length   55,340,444 *
    #         465 begin   55,247,432 end   55,297,432 size       50,000 total   55,340,444 file data/Euchromatin/SL2.50ch02___________000031997432_000055340444_000000000465_000055247432_000055297432.seq
 Chrom SL2.50ch03 Length   70,787,664 *
  Start            1 End    4,449,513 Size    4,449,512 Blocks       49,512 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch03___________000000000001_000004449513
+  class Euchromatin seq name SL2.50ch03___________000000000001_000004449513
    #           0 begin            1 end       50,001 size       50,000 total   70,787,664 file data/Euchromatin/SL2.50ch03___________000000000001_000004449513_000000000000_000000000001_000000050001.seq
    #           1 begin       50,001 end      100,001 size       50,000 total   70,787,664 file data/Euchromatin/SL2.50ch03___________000000000001_000004449513_000000000001_000000050001_000000100001.seq
    #           2 begin      100,001 end      150,001 size       50,000 total   70,787,664 file data/Euchromatin/SL2.50ch03___________000000000001_000004449513_000000000002_000000100001_000000150001.seq
@@ -3239,7 +3239,7 @@ Chrom SL2.50ch03 Length   70,787,664 *
    #          86 begin    4,300,001 end    4,350,001 size       50,000 total   70,787,664 file data/Euchromatin/SL2.50ch03___________000000000001_000004449513_000000000086_000004300001_000004350001.seq
    #          87 begin    4,350,001 end    4,400,001 size       50,000 total   70,787,664 file data/Euchromatin/SL2.50ch03___________000000000001_000004449513_000000000087_000004350001_000004400001.seq
  Start    4,449,513 End   19,453,686 Size   15,004,173 Blocks        4,173 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch03___________000004449513_000019453686
+  class Heterochromatin seq name SL2.50ch03___________000004449513_000019453686
    #           0 begin    4,449,513 end    4,499,513 size       50,000 total   70,787,664 file data/Heterochromatin/SL2.50ch03___________000004449513_000019453686_000000000000_000004449513_000004499513.seq
    #           1 begin    4,499,513 end    4,549,513 size       50,000 total   70,787,664 file data/Heterochromatin/SL2.50ch03___________000004449513_000019453686_000000000001_000004499513_000004549513.seq
    #           2 begin    4,549,513 end    4,599,513 size       50,000 total   70,787,664 file data/Heterochromatin/SL2.50ch03___________000004449513_000019453686_000000000002_000004549513_000004599513.seq
@@ -3542,7 +3542,7 @@ Chrom SL2.50ch03 Length   70,787,664 *
    #         299 begin   19,399,513 end   19,449,513 size       50,000 total   70,787,664 file data/Heterochromatin/SL2.50ch03___________000004449513_000019453686_000000000299_000019399513_000019449513.seq
  Start   19,453,685 End   19,453,686 Size            1 Blocks            1 Class centromere           
  Start   19,453,686 End   53,381,452 Size   33,927,766 Blocks       27,766 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch03___________000019453686_000053381452
+  class Heterochromatin seq name SL2.50ch03___________000019453686_000053381452
    #           0 begin   19,453,686 end   19,503,686 size       50,000 total   70,787,664 file data/Heterochromatin/SL2.50ch03___________000019453686_000053381452_000000000000_000019453686_000019503686.seq
    #           1 begin   19,503,686 end   19,553,686 size       50,000 total   70,787,664 file data/Heterochromatin/SL2.50ch03___________000019453686_000053381452_000000000001_000019503686_000019553686.seq
    #           2 begin   19,553,686 end   19,603,686 size       50,000 total   70,787,664 file data/Heterochromatin/SL2.50ch03___________000019453686_000053381452_000000000002_000019553686_000019603686.seq
@@ -4222,7 +4222,7 @@ Chrom SL2.50ch03 Length   70,787,664 *
    #         676 begin   53,253,686 end   53,303,686 size       50,000 total   70,787,664 file data/Heterochromatin/SL2.50ch03___________000019453686_000053381452_000000000676_000053253686_000053303686.seq
    #         677 begin   53,303,686 end   53,353,686 size       50,000 total   70,787,664 file data/Heterochromatin/SL2.50ch03___________000019453686_000053381452_000000000677_000053303686_000053353686.seq
  Start   53,381,452 End   70,787,664 Size   17,406,212 Blocks        6,212 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch03___________000053381452_000070787664
+  class Euchromatin seq name SL2.50ch03___________000053381452_000070787664
    #           0 begin   53,381,452 end   53,431,452 size       50,000 total   70,787,664 file data/Euchromatin/SL2.50ch03___________000053381452_000070787664_000000000000_000053381452_000053431452.seq
    #           1 begin   53,431,452 end   53,481,452 size       50,000 total   70,787,664 file data/Euchromatin/SL2.50ch03___________000053381452_000070787664_000000000001_000053431452_000053481452.seq
    #           2 begin   53,481,452 end   53,531,452 size       50,000 total   70,787,664 file data/Euchromatin/SL2.50ch03___________000053381452_000070787664_000000000002_000053481452_000053531452.seq
@@ -4573,7 +4573,7 @@ Chrom SL2.50ch03 Length   70,787,664 *
    #         347 begin   70,731,452 end   70,781,452 size       50,000 total   70,787,664 file data/Euchromatin/SL2.50ch03___________000053381452_000070787664_000000000347_000070731452_000070781452.seq
 Chrom SL2.50ch04 Length   66,470,942 *
  Start            1 End    4,702,190 Size    4,702,189 Blocks        2,189 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch04___________000000000001_000004702190
+  class Euchromatin seq name SL2.50ch04___________000000000001_000004702190
    #           0 begin            1 end       50,001 size       50,000 total   66,470,942 file data/Euchromatin/SL2.50ch04___________000000000001_000004702190_000000000000_000000000001_000000050001.seq
    #           1 begin       50,001 end      100,001 size       50,000 total   66,470,942 file data/Euchromatin/SL2.50ch04___________000000000001_000004702190_000000000001_000000050001_000000100001.seq
    #           2 begin      100,001 end      150,001 size       50,000 total   66,470,942 file data/Euchromatin/SL2.50ch04___________000000000001_000004702190_000000000002_000000100001_000000150001.seq
@@ -4669,7 +4669,7 @@ Chrom SL2.50ch04 Length   66,470,942 *
    #          92 begin    4,600,001 end    4,650,001 size       50,000 total   66,470,942 file data/Euchromatin/SL2.50ch04___________000000000001_000004702190_000000000092_000004600001_000004650001.seq
    #          93 begin    4,650,001 end    4,700,001 size       50,000 total   66,470,942 file data/Euchromatin/SL2.50ch04___________000000000001_000004702190_000000000093_000004650001_000004700001.seq
  Start    4,702,190 End   19,939,328 Size   15,237,138 Blocks       37,138 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch04___________000004702190_000019939328
+  class Heterochromatin seq name SL2.50ch04___________000004702190_000019939328
    #           0 begin    4,702,190 end    4,752,190 size       50,000 total   66,470,942 file data/Heterochromatin/SL2.50ch04___________000004702190_000019939328_000000000000_000004702190_000004752190.seq
    #           1 begin    4,752,190 end    4,802,190 size       50,000 total   66,470,942 file data/Heterochromatin/SL2.50ch04___________000004702190_000019939328_000000000001_000004752190_000004802190.seq
    #           2 begin    4,802,190 end    4,852,190 size       50,000 total   66,470,942 file data/Heterochromatin/SL2.50ch04___________000004702190_000019939328_000000000002_000004802190_000004852190.seq
@@ -4976,7 +4976,7 @@ Chrom SL2.50ch04 Length   66,470,942 *
    #         303 begin   19,852,190 end   19,902,190 size       50,000 total   66,470,942 file data/Heterochromatin/SL2.50ch04___________000004702190_000019939328_000000000303_000019852190_000019902190.seq
  Start   19,939,327 End   19,939,328 Size            1 Blocks            1 Class centromere           
  Start   19,939,328 End   52,703,023 Size   32,763,695 Blocks       13,695 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch04___________000019939328_000052703023
+  class Heterochromatin seq name SL2.50ch04___________000019939328_000052703023
    #           0 begin   19,939,328 end   19,989,328 size       50,000 total   66,470,942 file data/Heterochromatin/SL2.50ch04___________000019939328_000052703023_000000000000_000019939328_000019989328.seq
    #           1 begin   19,989,328 end   20,039,328 size       50,000 total   66,470,942 file data/Heterochromatin/SL2.50ch04___________000019939328_000052703023_000000000001_000019989328_000020039328.seq
    #           2 begin   20,039,328 end   20,089,328 size       50,000 total   66,470,942 file data/Heterochromatin/SL2.50ch04___________000019939328_000052703023_000000000002_000020039328_000020089328.seq
@@ -5633,7 +5633,7 @@ Chrom SL2.50ch04 Length   66,470,942 *
    #         653 begin   52,589,328 end   52,639,328 size       50,000 total   66,470,942 file data/Heterochromatin/SL2.50ch04___________000019939328_000052703023_000000000653_000052589328_000052639328.seq
    #         654 begin   52,639,328 end   52,689,328 size       50,000 total   66,470,942 file data/Heterochromatin/SL2.50ch04___________000019939328_000052703023_000000000654_000052639328_000052689328.seq
  Start   52,703,023 End   66,470,942 Size   13,767,919 Blocks       17,919 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch04___________000052703023_000066470942
+  class Euchromatin seq name SL2.50ch04___________000052703023_000066470942
    #           0 begin   52,703,023 end   52,753,023 size       50,000 total   66,470,942 file data/Euchromatin/SL2.50ch04___________000052703023_000066470942_000000000000_000052703023_000052753023.seq
    #           1 begin   52,753,023 end   52,803,023 size       50,000 total   66,470,942 file data/Euchromatin/SL2.50ch04___________000052703023_000066470942_000000000001_000052753023_000052803023.seq
    #           2 begin   52,803,023 end   52,853,023 size       50,000 total   66,470,942 file data/Euchromatin/SL2.50ch04___________000052703023_000066470942_000000000002_000052803023_000052853023.seq
@@ -5911,7 +5911,7 @@ Chrom SL2.50ch04 Length   66,470,942 *
    #         274 begin   66,403,023 end   66,453,023 size       50,000 total   66,470,942 file data/Euchromatin/SL2.50ch04___________000052703023_000066470942_000000000274_000066403023_000066453023.seq
 Chrom SL2.50ch05 Length   65,875,088 *
  Start            1 End    6,737,988 Size    6,737,987 Blocks       37,987 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch05___________000000000001_000006737988
+  class Euchromatin seq name SL2.50ch05___________000000000001_000006737988
    #           0 begin            1 end       50,001 size       50,000 total   65,875,088 file data/Euchromatin/SL2.50ch05___________000000000001_000006737988_000000000000_000000000001_000000050001.seq
    #           1 begin       50,001 end      100,001 size       50,000 total   65,875,088 file data/Euchromatin/SL2.50ch05___________000000000001_000006737988_000000000001_000000050001_000000100001.seq
    #           2 begin      100,001 end      150,001 size       50,000 total   65,875,088 file data/Euchromatin/SL2.50ch05___________000000000001_000006737988_000000000002_000000100001_000000150001.seq
@@ -6047,7 +6047,7 @@ Chrom SL2.50ch05 Length   65,875,088 *
    #         132 begin    6,600,001 end    6,650,001 size       50,000 total   65,875,088 file data/Euchromatin/SL2.50ch05___________000000000001_000006737988_000000000132_000006600001_000006650001.seq
    #         133 begin    6,650,001 end    6,700,001 size       50,000 total   65,875,088 file data/Euchromatin/SL2.50ch05___________000000000001_000006737988_000000000133_000006650001_000006700001.seq
  Start    6,737,988 End   31,622,521 Size   24,884,533 Blocks       34,533 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch05___________000006737988_000031622521
+  class Heterochromatin seq name SL2.50ch05___________000006737988_000031622521
    #           0 begin    6,737,988 end    6,787,988 size       50,000 total   65,875,088 file data/Heterochromatin/SL2.50ch05___________000006737988_000031622521_000000000000_000006737988_000006787988.seq
    #           1 begin    6,787,988 end    6,837,988 size       50,000 total   65,875,088 file data/Heterochromatin/SL2.50ch05___________000006737988_000031622521_000000000001_000006787988_000006837988.seq
    #           2 begin    6,837,988 end    6,887,988 size       50,000 total   65,875,088 file data/Heterochromatin/SL2.50ch05___________000006737988_000031622521_000000000002_000006837988_000006887988.seq
@@ -6547,7 +6547,7 @@ Chrom SL2.50ch05 Length   65,875,088 *
    #         496 begin   31,537,988 end   31,587,988 size       50,000 total   65,875,088 file data/Heterochromatin/SL2.50ch05___________000006737988_000031622521_000000000496_000031537988_000031587988.seq
  Start   31,622,520 End   31,622,521 Size            1 Blocks            1 Class centromere           
  Start   31,622,521 End   59,038,412 Size   27,415,891 Blocks       15,891 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch05___________000031622521_000059038412
+  class Heterochromatin seq name SL2.50ch05___________000031622521_000059038412
    #           0 begin   31,622,521 end   31,672,521 size       50,000 total   65,875,088 file data/Heterochromatin/SL2.50ch05___________000031622521_000059038412_000000000000_000031622521_000031672521.seq
    #           1 begin   31,672,521 end   31,722,521 size       50,000 total   65,875,088 file data/Heterochromatin/SL2.50ch05___________000031622521_000059038412_000000000001_000031672521_000031722521.seq
    #           2 begin   31,722,521 end   31,772,521 size       50,000 total   65,875,088 file data/Heterochromatin/SL2.50ch05___________000031622521_000059038412_000000000002_000031722521_000031772521.seq
@@ -7097,7 +7097,7 @@ Chrom SL2.50ch05 Length   65,875,088 *
    #         546 begin   58,922,521 end   58,972,521 size       50,000 total   65,875,088 file data/Heterochromatin/SL2.50ch05___________000031622521_000059038412_000000000546_000058922521_000058972521.seq
    #         547 begin   58,972,521 end   59,022,521 size       50,000 total   65,875,088 file data/Heterochromatin/SL2.50ch05___________000031622521_000059038412_000000000547_000058972521_000059022521.seq
  Start   59,038,412 End   65,875,088 Size    6,836,676 Blocks       36,676 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch05___________000059038412_000065875088
+  class Euchromatin seq name SL2.50ch05___________000059038412_000065875088
    #           0 begin   59,038,412 end   59,088,412 size       50,000 total   65,875,088 file data/Euchromatin/SL2.50ch05___________000059038412_000065875088_000000000000_000059038412_000059088412.seq
    #           1 begin   59,088,412 end   59,138,412 size       50,000 total   65,875,088 file data/Euchromatin/SL2.50ch05___________000059038412_000065875088_000000000001_000059088412_000059138412.seq
    #           2 begin   59,138,412 end   59,188,412 size       50,000 total   65,875,088 file data/Euchromatin/SL2.50ch05___________000059038412_000065875088_000000000002_000059138412_000059188412.seq
@@ -7236,7 +7236,7 @@ Chrom SL2.50ch05 Length   65,875,088 *
    #         135 begin   65,788,412 end   65,838,412 size       50,000 total   65,875,088 file data/Euchromatin/SL2.50ch05___________000059038412_000065875088_000000000135_000065788412_000065838412.seq
 Chrom SL2.50ch06 Length   49,751,636 *
  Start            1 End    2,920,225 Size    2,920,224 Blocks       20,224 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch06___________000000000001_000002920225
+  class Euchromatin seq name SL2.50ch06___________000000000001_000002920225
    #           0 begin            1 end       50,001 size       50,000 total   49,751,636 file data/Euchromatin/SL2.50ch06___________000000000001_000002920225_000000000000_000000000001_000000050001.seq
    #           1 begin       50,001 end      100,001 size       50,000 total   49,751,636 file data/Euchromatin/SL2.50ch06___________000000000001_000002920225_000000000001_000000050001_000000100001.seq
    #           2 begin      100,001 end      150,001 size       50,000 total   49,751,636 file data/Euchromatin/SL2.50ch06___________000000000001_000002920225_000000000002_000000100001_000000150001.seq
@@ -7296,7 +7296,7 @@ Chrom SL2.50ch06 Length   49,751,636 *
    #          56 begin    2,800,001 end    2,850,001 size       50,000 total   49,751,636 file data/Euchromatin/SL2.50ch06___________000000000001_000002920225_000000000056_000002800001_000002850001.seq
    #          57 begin    2,850,001 end    2,900,001 size       50,000 total   49,751,636 file data/Euchromatin/SL2.50ch06___________000000000001_000002920225_000000000057_000002850001_000002900001.seq
  Start    2,920,225 End   14,415,601 Size   11,495,376 Blocks       45,376 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch06___________000002920225_000014415601
+  class Heterochromatin seq name SL2.50ch06___________000002920225_000014415601
    #           0 begin    2,920,225 end    2,970,225 size       50,000 total   49,751,636 file data/Heterochromatin/SL2.50ch06___________000002920225_000014415601_000000000000_000002920225_000002970225.seq
    #           1 begin    2,970,225 end    3,020,225 size       50,000 total   49,751,636 file data/Heterochromatin/SL2.50ch06___________000002920225_000014415601_000000000001_000002970225_000003020225.seq
    #           2 begin    3,020,225 end    3,070,225 size       50,000 total   49,751,636 file data/Heterochromatin/SL2.50ch06___________000002920225_000014415601_000000000002_000003020225_000003070225.seq
@@ -7528,7 +7528,7 @@ Chrom SL2.50ch06 Length   49,751,636 *
    #         228 begin   14,320,225 end   14,370,225 size       50,000 total   49,751,636 file data/Heterochromatin/SL2.50ch06___________000002920225_000014415601_000000000228_000014320225_000014370225.seq
  Start   14,415,600 End   14,415,601 Size            1 Blocks            1 Class centromere           
  Start   14,415,601 End   34,998,524 Size   20,582,923 Blocks       32,923 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch06___________000014415601_000034998524
+  class Heterochromatin seq name SL2.50ch06___________000014415601_000034998524
    #           0 begin   14,415,601 end   14,465,601 size       50,000 total   49,751,636 file data/Heterochromatin/SL2.50ch06___________000014415601_000034998524_000000000000_000014415601_000014465601.seq
    #           1 begin   14,465,601 end   14,515,601 size       50,000 total   49,751,636 file data/Heterochromatin/SL2.50ch06___________000014415601_000034998524_000000000001_000014465601_000014515601.seq
    #           2 begin   14,515,601 end   14,565,601 size       50,000 total   49,751,636 file data/Heterochromatin/SL2.50ch06___________000014415601_000034998524_000000000002_000014515601_000014565601.seq
@@ -7941,7 +7941,7 @@ Chrom SL2.50ch06 Length   49,751,636 *
    #         409 begin   34,865,601 end   34,915,601 size       50,000 total   49,751,636 file data/Heterochromatin/SL2.50ch06___________000014415601_000034998524_000000000409_000034865601_000034915601.seq
    #         410 begin   34,915,601 end   34,965,601 size       50,000 total   49,751,636 file data/Heterochromatin/SL2.50ch06___________000014415601_000034998524_000000000410_000034915601_000034965601.seq
  Start   34,998,524 End   49,751,636 Size   14,753,112 Blocks        3,112 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch06___________000034998524_000049751636
+  class Euchromatin seq name SL2.50ch06___________000034998524_000049751636
    #           0 begin   34,998,524 end   35,048,524 size       50,000 total   49,751,636 file data/Euchromatin/SL2.50ch06___________000034998524_000049751636_000000000000_000034998524_000035048524.seq
    #           1 begin   35,048,524 end   35,098,524 size       50,000 total   49,751,636 file data/Euchromatin/SL2.50ch06___________000034998524_000049751636_000000000001_000035048524_000035098524.seq
    #           2 begin   35,098,524 end   35,148,524 size       50,000 total   49,751,636 file data/Euchromatin/SL2.50ch06___________000034998524_000049751636_000000000002_000035098524_000035148524.seq
@@ -8239,7 +8239,7 @@ Chrom SL2.50ch06 Length   49,751,636 *
    #         294 begin   49,698,524 end   49,748,524 size       50,000 total   49,751,636 file data/Euchromatin/SL2.50ch06___________000034998524_000049751636_000000000294_000049698524_000049748524.seq
 Chrom SL2.50ch07 Length   68,045,021 *
  Start            1 End    5,103,862 Size    5,103,861 Blocks        3,861 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch07___________000000000001_000005103862
+  class Euchromatin seq name SL2.50ch07___________000000000001_000005103862
    #           0 begin            1 end       50,001 size       50,000 total   68,045,021 file data/Euchromatin/SL2.50ch07___________000000000001_000005103862_000000000000_000000000001_000000050001.seq
    #           1 begin       50,001 end      100,001 size       50,000 total   68,045,021 file data/Euchromatin/SL2.50ch07___________000000000001_000005103862_000000000001_000000050001_000000100001.seq
    #           2 begin      100,001 end      150,001 size       50,000 total   68,045,021 file data/Euchromatin/SL2.50ch07___________000000000001_000005103862_000000000002_000000100001_000000150001.seq
@@ -8343,7 +8343,7 @@ Chrom SL2.50ch07 Length   68,045,021 *
    #         100 begin    5,000,001 end    5,050,001 size       50,000 total   68,045,021 file data/Euchromatin/SL2.50ch07___________000000000001_000005103862_000000000100_000005000001_000005050001.seq
    #         101 begin    5,050,001 end    5,100,001 size       50,000 total   68,045,021 file data/Euchromatin/SL2.50ch07___________000000000001_000005103862_000000000101_000005050001_000005100001.seq
  Start    5,103,862 End   26,048,607 Size   20,944,745 Blocks       44,745 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch07___________000005103862_000026048607
+  class Heterochromatin seq name SL2.50ch07___________000005103862_000026048607
    #           0 begin    5,103,862 end    5,153,862 size       50,000 total   68,045,021 file data/Heterochromatin/SL2.50ch07___________000005103862_000026048607_000000000000_000005103862_000005153862.seq
    #           1 begin    5,153,862 end    5,203,862 size       50,000 total   68,045,021 file data/Heterochromatin/SL2.50ch07___________000005103862_000026048607_000000000001_000005153862_000005203862.seq
    #           2 begin    5,203,862 end    5,253,862 size       50,000 total   68,045,021 file data/Heterochromatin/SL2.50ch07___________000005103862_000026048607_000000000002_000005203862_000005253862.seq
@@ -8764,7 +8764,7 @@ Chrom SL2.50ch07 Length   68,045,021 *
    #         417 begin   25,953,862 end   26,003,862 size       50,000 total   68,045,021 file data/Heterochromatin/SL2.50ch07___________000005103862_000026048607_000000000417_000025953862_000026003862.seq
  Start   26,048,606 End   26,048,607 Size            1 Blocks            1 Class centromere           
  Start   26,048,607 End   57,105,417 Size   31,056,810 Blocks        6,810 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch07___________000026048607_000057105417
+  class Heterochromatin seq name SL2.50ch07___________000026048607_000057105417
    #           0 begin   26,048,607 end   26,098,607 size       50,000 total   68,045,021 file data/Heterochromatin/SL2.50ch07___________000026048607_000057105417_000000000000_000026048607_000026098607.seq
    #           1 begin   26,098,607 end   26,148,607 size       50,000 total   68,045,021 file data/Heterochromatin/SL2.50ch07___________000026048607_000057105417_000000000001_000026098607_000026148607.seq
    #           2 begin   26,148,607 end   26,198,607 size       50,000 total   68,045,021 file data/Heterochromatin/SL2.50ch07___________000026048607_000057105417_000000000002_000026148607_000026198607.seq
@@ -9387,7 +9387,7 @@ Chrom SL2.50ch07 Length   68,045,021 *
    #         619 begin   56,998,607 end   57,048,607 size       50,000 total   68,045,021 file data/Heterochromatin/SL2.50ch07___________000026048607_000057105417_000000000619_000056998607_000057048607.seq
    #         620 begin   57,048,607 end   57,098,607 size       50,000 total   68,045,021 file data/Heterochromatin/SL2.50ch07___________000026048607_000057105417_000000000620_000057048607_000057098607.seq
  Start   57,105,417 End   68,045,021 Size   10,939,604 Blocks       39,604 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch07___________000057105417_000068045021
+  class Euchromatin seq name SL2.50ch07___________000057105417_000068045021
    #           0 begin   57,105,417 end   57,155,417 size       50,000 total   68,045,021 file data/Euchromatin/SL2.50ch07___________000057105417_000068045021_000000000000_000057105417_000057155417.seq
    #           1 begin   57,155,417 end   57,205,417 size       50,000 total   68,045,021 file data/Euchromatin/SL2.50ch07___________000057105417_000068045021_000000000001_000057155417_000057205417.seq
    #           2 begin   57,205,417 end   57,255,417 size       50,000 total   68,045,021 file data/Euchromatin/SL2.50ch07___________000057105417_000068045021_000000000002_000057205417_000057255417.seq
@@ -9608,7 +9608,7 @@ Chrom SL2.50ch07 Length   68,045,021 *
    #         217 begin   67,955,417 end   68,005,417 size       50,000 total   68,045,021 file data/Euchromatin/SL2.50ch07___________000057105417_000068045021_000000000217_000067955417_000068005417.seq
 Chrom SL2.50ch08 Length   65,866,657 *
  Start            1 End    4,212,766 Size    4,212,765 Blocks       12,765 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch08___________000000000001_000004212766
+  class Euchromatin seq name SL2.50ch08___________000000000001_000004212766
    #           0 begin            1 end       50,001 size       50,000 total   65,866,657 file data/Euchromatin/SL2.50ch08___________000000000001_000004212766_000000000000_000000000001_000000050001.seq
    #           1 begin       50,001 end      100,001 size       50,000 total   65,866,657 file data/Euchromatin/SL2.50ch08___________000000000001_000004212766_000000000001_000000050001_000000100001.seq
    #           2 begin      100,001 end      150,001 size       50,000 total   65,866,657 file data/Euchromatin/SL2.50ch08___________000000000001_000004212766_000000000002_000000100001_000000150001.seq
@@ -9694,7 +9694,7 @@ Chrom SL2.50ch08 Length   65,866,657 *
    #          82 begin    4,100,001 end    4,150,001 size       50,000 total   65,866,657 file data/Euchromatin/SL2.50ch08___________000000000001_000004212766_000000000082_000004100001_000004150001.seq
    #          83 begin    4,150,001 end    4,200,001 size       50,000 total   65,866,657 file data/Euchromatin/SL2.50ch08___________000000000001_000004212766_000000000083_000004150001_000004200001.seq
  Start    4,212,766 End   22,443,695 Size   18,230,929 Blocks       30,929 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch08___________000004212766_000022443695
+  class Heterochromatin seq name SL2.50ch08___________000004212766_000022443695
    #           0 begin    4,212,766 end    4,262,766 size       50,000 total   65,866,657 file data/Heterochromatin/SL2.50ch08___________000004212766_000022443695_000000000000_000004212766_000004262766.seq
    #           1 begin    4,262,766 end    4,312,766 size       50,000 total   65,866,657 file data/Heterochromatin/SL2.50ch08___________000004212766_000022443695_000000000001_000004262766_000004312766.seq
    #           2 begin    4,312,766 end    4,362,766 size       50,000 total   65,866,657 file data/Heterochromatin/SL2.50ch08___________000004212766_000022443695_000000000002_000004312766_000004362766.seq
@@ -10061,7 +10061,7 @@ Chrom SL2.50ch08 Length   65,866,657 *
    #         363 begin   22,362,766 end   22,412,766 size       50,000 total   65,866,657 file data/Heterochromatin/SL2.50ch08___________000004212766_000022443695_000000000363_000022362766_000022412766.seq
  Start   22,443,694 End   22,443,695 Size            1 Blocks            1 Class centromere           
  Start   22,443,695 End   53,590,189 Size   31,146,494 Blocks       46,494 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch08___________000022443695_000053590189
+  class Heterochromatin seq name SL2.50ch08___________000022443695_000053590189
    #           0 begin   22,443,695 end   22,493,695 size       50,000 total   65,866,657 file data/Heterochromatin/SL2.50ch08___________000022443695_000053590189_000000000000_000022443695_000022493695.seq
    #           1 begin   22,493,695 end   22,543,695 size       50,000 total   65,866,657 file data/Heterochromatin/SL2.50ch08___________000022443695_000053590189_000000000001_000022493695_000022543695.seq
    #           2 begin   22,543,695 end   22,593,695 size       50,000 total   65,866,657 file data/Heterochromatin/SL2.50ch08___________000022443695_000053590189_000000000002_000022543695_000022593695.seq
@@ -10685,7 +10685,7 @@ Chrom SL2.50ch08 Length   65,866,657 *
    #         620 begin   53,443,695 end   53,493,695 size       50,000 total   65,866,657 file data/Heterochromatin/SL2.50ch08___________000022443695_000053590189_000000000620_000053443695_000053493695.seq
    #         621 begin   53,493,695 end   53,543,695 size       50,000 total   65,866,657 file data/Heterochromatin/SL2.50ch08___________000022443695_000053590189_000000000621_000053493695_000053543695.seq
  Start   53,590,189 End   65,866,657 Size   12,276,468 Blocks       26,468 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch08___________000053590189_000065866657
+  class Euchromatin seq name SL2.50ch08___________000053590189_000065866657
    #           0 begin   53,590,189 end   53,640,189 size       50,000 total   65,866,657 file data/Euchromatin/SL2.50ch08___________000053590189_000065866657_000000000000_000053590189_000053640189.seq
    #           1 begin   53,640,189 end   53,690,189 size       50,000 total   65,866,657 file data/Euchromatin/SL2.50ch08___________000053590189_000065866657_000000000001_000053640189_000053690189.seq
    #           2 begin   53,690,189 end   53,740,189 size       50,000 total   65,866,657 file data/Euchromatin/SL2.50ch08___________000053590189_000065866657_000000000002_000053690189_000053740189.seq
@@ -10933,7 +10933,7 @@ Chrom SL2.50ch08 Length   65,866,657 *
    #         244 begin   65,790,189 end   65,840,189 size       50,000 total   65,866,657 file data/Euchromatin/SL2.50ch08___________000053590189_000065866657_000000000244_000065790189_000065840189.seq
 Chrom SL2.50ch09 Length   72,482,091 *
  Start            1 End    4,709,143 Size    4,709,142 Blocks        9,142 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch09___________000000000001_000004709143
+  class Euchromatin seq name SL2.50ch09___________000000000001_000004709143
    #           0 begin            1 end       50,001 size       50,000 total   72,482,091 file data/Euchromatin/SL2.50ch09___________000000000001_000004709143_000000000000_000000000001_000000050001.seq
    #           1 begin       50,001 end      100,001 size       50,000 total   72,482,091 file data/Euchromatin/SL2.50ch09___________000000000001_000004709143_000000000001_000000050001_000000100001.seq
    #           2 begin      100,001 end      150,001 size       50,000 total   72,482,091 file data/Euchromatin/SL2.50ch09___________000000000001_000004709143_000000000002_000000100001_000000150001.seq
@@ -11029,7 +11029,7 @@ Chrom SL2.50ch09 Length   72,482,091 *
    #          92 begin    4,600,001 end    4,650,001 size       50,000 total   72,482,091 file data/Euchromatin/SL2.50ch09___________000000000001_000004709143_000000000092_000004600001_000004650001.seq
    #          93 begin    4,650,001 end    4,700,001 size       50,000 total   72,482,091 file data/Euchromatin/SL2.50ch09___________000000000001_000004709143_000000000093_000004650001_000004700001.seq
  Start    4,709,143 End   28,373,151 Size   23,664,008 Blocks       14,008 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch09___________000004709143_000028373151
+  class Heterochromatin seq name SL2.50ch09___________000004709143_000028373151
    #           0 begin    4,709,143 end    4,759,143 size       50,000 total   72,482,091 file data/Heterochromatin/SL2.50ch09___________000004709143_000028373151_000000000000_000004709143_000004759143.seq
    #           1 begin    4,759,143 end    4,809,143 size       50,000 total   72,482,091 file data/Heterochromatin/SL2.50ch09___________000004709143_000028373151_000000000001_000004759143_000004809143.seq
    #           2 begin    4,809,143 end    4,859,143 size       50,000 total   72,482,091 file data/Heterochromatin/SL2.50ch09___________000004709143_000028373151_000000000002_000004809143_000004859143.seq
@@ -11505,7 +11505,7 @@ Chrom SL2.50ch09 Length   72,482,091 *
    #         472 begin   28,309,143 end   28,359,143 size       50,000 total   72,482,091 file data/Heterochromatin/SL2.50ch09___________000004709143_000028373151_000000000472_000028309143_000028359143.seq
  Start   28,373,150 End   28,373,151 Size            1 Blocks            1 Class centromere           
  Start   28,373,151 End   62,844,266 Size   34,471,115 Blocks       21,115 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch09___________000028373151_000062844266
+  class Heterochromatin seq name SL2.50ch09___________000028373151_000062844266
    #           0 begin   28,373,151 end   28,423,151 size       50,000 total   72,482,091 file data/Heterochromatin/SL2.50ch09___________000028373151_000062844266_000000000000_000028373151_000028423151.seq
    #           1 begin   28,423,151 end   28,473,151 size       50,000 total   72,482,091 file data/Heterochromatin/SL2.50ch09___________000028373151_000062844266_000000000001_000028423151_000028473151.seq
    #           2 begin   28,473,151 end   28,523,151 size       50,000 total   72,482,091 file data/Heterochromatin/SL2.50ch09___________000028373151_000062844266_000000000002_000028473151_000028523151.seq
@@ -12196,7 +12196,7 @@ Chrom SL2.50ch09 Length   72,482,091 *
    #         687 begin   62,723,151 end   62,773,151 size       50,000 total   72,482,091 file data/Heterochromatin/SL2.50ch09___________000028373151_000062844266_000000000687_000062723151_000062773151.seq
    #         688 begin   62,773,151 end   62,823,151 size       50,000 total   72,482,091 file data/Heterochromatin/SL2.50ch09___________000028373151_000062844266_000000000688_000062773151_000062823151.seq
  Start   62,844,266 End   72,482,091 Size    9,637,825 Blocks       37,825 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch09___________000062844266_000072482091
+  class Euchromatin seq name SL2.50ch09___________000062844266_000072482091
    #           0 begin   62,844,266 end   62,894,266 size       50,000 total   72,482,091 file data/Euchromatin/SL2.50ch09___________000062844266_000072482091_000000000000_000062844266_000062894266.seq
    #           1 begin   62,894,266 end   62,944,266 size       50,000 total   72,482,091 file data/Euchromatin/SL2.50ch09___________000062844266_000072482091_000000000001_000062894266_000062944266.seq
    #           2 begin   62,944,266 end   62,994,266 size       50,000 total   72,482,091 file data/Euchromatin/SL2.50ch09___________000062844266_000072482091_000000000002_000062944266_000062994266.seq
@@ -12391,7 +12391,7 @@ Chrom SL2.50ch09 Length   72,482,091 *
    #         191 begin   72,394,266 end   72,444,266 size       50,000 total   72,482,091 file data/Euchromatin/SL2.50ch09___________000062844266_000072482091_000000000191_000072394266_000072444266.seq
 Chrom SL2.50ch10 Length   65,527,505 *
  Start            1 End    3,971,423 Size    3,971,422 Blocks       21,422 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch10___________000000000001_000003971423
+  class Euchromatin seq name SL2.50ch10___________000000000001_000003971423
    #           0 begin            1 end       50,001 size       50,000 total   65,527,505 file data/Euchromatin/SL2.50ch10___________000000000001_000003971423_000000000000_000000000001_000000050001.seq
    #           1 begin       50,001 end      100,001 size       50,000 total   65,527,505 file data/Euchromatin/SL2.50ch10___________000000000001_000003971423_000000000001_000000050001_000000100001.seq
    #           2 begin      100,001 end      150,001 size       50,000 total   65,527,505 file data/Euchromatin/SL2.50ch10___________000000000001_000003971423_000000000002_000000100001_000000150001.seq
@@ -12472,7 +12472,7 @@ Chrom SL2.50ch10 Length   65,527,505 *
    #          77 begin    3,850,001 end    3,900,001 size       50,000 total   65,527,505 file data/Euchromatin/SL2.50ch10___________000000000001_000003971423_000000000077_000003850001_000003900001.seq
    #          78 begin    3,900,001 end    3,950,001 size       50,000 total   65,527,505 file data/Euchromatin/SL2.50ch10___________000000000001_000003971423_000000000078_000003900001_000003950001.seq
  Start    3,971,423 End   23,536,078 Size   19,564,655 Blocks       14,655 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch10___________000003971423_000023536078
+  class Heterochromatin seq name SL2.50ch10___________000003971423_000023536078
    #           0 begin    3,971,423 end    4,021,423 size       50,000 total   65,527,505 file data/Heterochromatin/SL2.50ch10___________000003971423_000023536078_000000000000_000003971423_000004021423.seq
    #           1 begin    4,021,423 end    4,071,423 size       50,000 total   65,527,505 file data/Heterochromatin/SL2.50ch10___________000003971423_000023536078_000000000001_000004021423_000004071423.seq
    #           2 begin    4,071,423 end    4,121,423 size       50,000 total   65,527,505 file data/Heterochromatin/SL2.50ch10___________000003971423_000023536078_000000000002_000004071423_000004121423.seq
@@ -12866,7 +12866,7 @@ Chrom SL2.50ch10 Length   65,527,505 *
    #         390 begin   23,471,423 end   23,521,423 size       50,000 total   65,527,505 file data/Heterochromatin/SL2.50ch10___________000003971423_000023536078_000000000390_000023471423_000023521423.seq
  Start   23,536,077 End   23,536,078 Size            1 Blocks            1 Class centromere           
  Start   23,536,078 End   55,455,388 Size   31,919,310 Blocks       19,310 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch10___________000023536078_000055455388
+  class Heterochromatin seq name SL2.50ch10___________000023536078_000055455388
    #           0 begin   23,536,078 end   23,586,078 size       50,000 total   65,527,505 file data/Heterochromatin/SL2.50ch10___________000023536078_000055455388_000000000000_000023536078_000023586078.seq
    #           1 begin   23,586,078 end   23,636,078 size       50,000 total   65,527,505 file data/Heterochromatin/SL2.50ch10___________000023536078_000055455388_000000000001_000023586078_000023636078.seq
    #           2 begin   23,636,078 end   23,686,078 size       50,000 total   65,527,505 file data/Heterochromatin/SL2.50ch10___________000023536078_000055455388_000000000002_000023636078_000023686078.seq
@@ -13506,7 +13506,7 @@ Chrom SL2.50ch10 Length   65,527,505 *
    #         636 begin   55,336,078 end   55,386,078 size       50,000 total   65,527,505 file data/Heterochromatin/SL2.50ch10___________000023536078_000055455388_000000000636_000055336078_000055386078.seq
    #         637 begin   55,386,078 end   55,436,078 size       50,000 total   65,527,505 file data/Heterochromatin/SL2.50ch10___________000023536078_000055455388_000000000637_000055386078_000055436078.seq
  Start   55,455,388 End   65,527,505 Size   10,072,117 Blocks       22,117 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch10___________000055455388_000065527505
+  class Euchromatin seq name SL2.50ch10___________000055455388_000065527505
    #           0 begin   55,455,388 end   55,505,388 size       50,000 total   65,527,505 file data/Euchromatin/SL2.50ch10___________000055455388_000065527505_000000000000_000055455388_000055505388.seq
    #           1 begin   55,505,388 end   55,555,388 size       50,000 total   65,527,505 file data/Euchromatin/SL2.50ch10___________000055455388_000065527505_000000000001_000055505388_000055555388.seq
    #           2 begin   55,555,388 end   55,605,388 size       50,000 total   65,527,505 file data/Euchromatin/SL2.50ch10___________000055455388_000065527505_000000000002_000055555388_000055605388.seq
@@ -13710,7 +13710,7 @@ Chrom SL2.50ch10 Length   65,527,505 *
    #         200 begin   65,455,388 end   65,505,388 size       50,000 total   65,527,505 file data/Euchromatin/SL2.50ch10___________000055455388_000065527505_000000000200_000065455388_000065505388.seq
 Chrom SL2.50ch11 Length   56,302,525 *
  Start            1 End    6,346,950 Size    6,346,949 Blocks       46,949 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch11___________000000000001_000006346950
+  class Euchromatin seq name SL2.50ch11___________000000000001_000006346950
    #           0 begin            1 end       50,001 size       50,000 total   56,302,525 file data/Euchromatin/SL2.50ch11___________000000000001_000006346950_000000000000_000000000001_000000050001.seq
    #           1 begin       50,001 end      100,001 size       50,000 total   56,302,525 file data/Euchromatin/SL2.50ch11___________000000000001_000006346950_000000000001_000000050001_000000100001.seq
    #           2 begin      100,001 end      150,001 size       50,000 total   56,302,525 file data/Euchromatin/SL2.50ch11___________000000000001_000006346950_000000000002_000000100001_000000150001.seq
@@ -13838,7 +13838,7 @@ Chrom SL2.50ch11 Length   56,302,525 *
    #         124 begin    6,200,001 end    6,250,001 size       50,000 total   56,302,525 file data/Euchromatin/SL2.50ch11___________000000000001_000006346950_000000000124_000006200001_000006250001.seq
    #         125 begin    6,250,001 end    6,300,001 size       50,000 total   56,302,525 file data/Euchromatin/SL2.50ch11___________000000000001_000006346950_000000000125_000006250001_000006300001.seq
  Start    6,346,950 End   24,067,925 Size   17,720,975 Blocks       20,975 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch11___________000006346950_000024067925
+  class Heterochromatin seq name SL2.50ch11___________000006346950_000024067925
    #           0 begin    6,346,950 end    6,396,950 size       50,000 total   56,302,525 file data/Heterochromatin/SL2.50ch11___________000006346950_000024067925_000000000000_000006346950_000006396950.seq
    #           1 begin    6,396,950 end    6,446,950 size       50,000 total   56,302,525 file data/Heterochromatin/SL2.50ch11___________000006346950_000024067925_000000000001_000006396950_000006446950.seq
    #           2 begin    6,446,950 end    6,496,950 size       50,000 total   56,302,525 file data/Heterochromatin/SL2.50ch11___________000006346950_000024067925_000000000002_000006446950_000006496950.seq
@@ -14195,7 +14195,7 @@ Chrom SL2.50ch11 Length   56,302,525 *
    #         353 begin   23,996,950 end   24,046,950 size       50,000 total   56,302,525 file data/Heterochromatin/SL2.50ch11___________000006346950_000024067925_000000000353_000023996950_000024046950.seq
  Start   24,067,924 End   24,067,925 Size            1 Blocks            1 Class centromere           
  Start   24,067,925 End   49,320,075 Size   25,252,150 Blocks        2,150 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch11___________000024067925_000049320075
+  class Heterochromatin seq name SL2.50ch11___________000024067925_000049320075
    #           0 begin   24,067,925 end   24,117,925 size       50,000 total   56,302,525 file data/Heterochromatin/SL2.50ch11___________000024067925_000049320075_000000000000_000024067925_000024117925.seq
    #           1 begin   24,117,925 end   24,167,925 size       50,000 total   56,302,525 file data/Heterochromatin/SL2.50ch11___________000024067925_000049320075_000000000001_000024117925_000024167925.seq
    #           2 begin   24,167,925 end   24,217,925 size       50,000 total   56,302,525 file data/Heterochromatin/SL2.50ch11___________000024067925_000049320075_000000000002_000024167925_000024217925.seq
@@ -14702,7 +14702,7 @@ Chrom SL2.50ch11 Length   56,302,525 *
    #         503 begin   49,217,925 end   49,267,925 size       50,000 total   56,302,525 file data/Heterochromatin/SL2.50ch11___________000024067925_000049320075_000000000503_000049217925_000049267925.seq
    #         504 begin   49,267,925 end   49,317,925 size       50,000 total   56,302,525 file data/Heterochromatin/SL2.50ch11___________000024067925_000049320075_000000000504_000049267925_000049317925.seq
  Start   49,320,075 End   56,302,525 Size    6,982,450 Blocks       32,450 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch11___________000049320075_000056302525
+  class Euchromatin seq name SL2.50ch11___________000049320075_000056302525
    #           0 begin   49,320,075 end   49,370,075 size       50,000 total   56,302,525 file data/Euchromatin/SL2.50ch11___________000049320075_000056302525_000000000000_000049320075_000049370075.seq
    #           1 begin   49,370,075 end   49,420,075 size       50,000 total   56,302,525 file data/Euchromatin/SL2.50ch11___________000049320075_000056302525_000000000001_000049370075_000049420075.seq
    #           2 begin   49,420,075 end   49,470,075 size       50,000 total   56,302,525 file data/Euchromatin/SL2.50ch11___________000049320075_000056302525_000000000002_000049420075_000049470075.seq
@@ -14844,7 +14844,7 @@ Chrom SL2.50ch11 Length   56,302,525 *
    #         138 begin   56,220,075 end   56,270,075 size       50,000 total   56,302,525 file data/Euchromatin/SL2.50ch11___________000049320075_000056302525_000000000138_000056220075_000056270075.seq
 Chrom SL2.50ch12 Length   67,145,203 *
  Start            1 End    6,387,711 Size    6,387,710 Blocks       37,710 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch12___________000000000001_000006387711
+  class Euchromatin seq name SL2.50ch12___________000000000001_000006387711
    #           0 begin            1 end       50,001 size       50,000 total   67,145,203 file data/Euchromatin/SL2.50ch12___________000000000001_000006387711_000000000000_000000000001_000000050001.seq
    #           1 begin       50,001 end      100,001 size       50,000 total   67,145,203 file data/Euchromatin/SL2.50ch12___________000000000001_000006387711_000000000001_000000050001_000000100001.seq
    #           2 begin      100,001 end      150,001 size       50,000 total   67,145,203 file data/Euchromatin/SL2.50ch12___________000000000001_000006387711_000000000002_000000100001_000000150001.seq
@@ -14973,7 +14973,7 @@ Chrom SL2.50ch12 Length   67,145,203 *
    #         125 begin    6,250,001 end    6,300,001 size       50,000 total   67,145,203 file data/Euchromatin/SL2.50ch12___________000000000001_000006387711_000000000125_000006250001_000006300001.seq
    #         126 begin    6,300,001 end    6,350,001 size       50,000 total   67,145,203 file data/Euchromatin/SL2.50ch12___________000000000001_000006387711_000000000126_000006300001_000006350001.seq
  Start    6,387,711 End   31,525,904 Size   25,138,193 Blocks       38,193 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch12___________000006387711_000031525904
+  class Heterochromatin seq name SL2.50ch12___________000006387711_000031525904
    #           0 begin    6,387,711 end    6,437,711 size       50,000 total   67,145,203 file data/Heterochromatin/SL2.50ch12___________000006387711_000031525904_000000000000_000006387711_000006437711.seq
    #           1 begin    6,437,711 end    6,487,711 size       50,000 total   67,145,203 file data/Heterochromatin/SL2.50ch12___________000006387711_000031525904_000000000001_000006437711_000006487711.seq
    #           2 begin    6,487,711 end    6,537,711 size       50,000 total   67,145,203 file data/Heterochromatin/SL2.50ch12___________000006387711_000031525904_000000000002_000006487711_000006537711.seq
@@ -15478,7 +15478,7 @@ Chrom SL2.50ch12 Length   67,145,203 *
    #         501 begin   31,437,711 end   31,487,711 size       50,000 total   67,145,203 file data/Heterochromatin/SL2.50ch12___________000006387711_000031525904_000000000501_000031437711_000031487711.seq
  Start   31,525,903 End   31,525,904 Size            1 Blocks            1 Class centromere           
  Start   31,525,904 End   60,809,985 Size   29,284,081 Blocks       34,081 Class Heterochromatin      *
-  out path data/Heterochromatin seq name SL2.50ch12___________000031525904_000060809985
+  class Heterochromatin seq name SL2.50ch12___________000031525904_000060809985
    #           0 begin   31,525,904 end   31,575,904 size       50,000 total   67,145,203 file data/Heterochromatin/SL2.50ch12___________000031525904_000060809985_000000000000_000031525904_000031575904.seq
    #           1 begin   31,575,904 end   31,625,904 size       50,000 total   67,145,203 file data/Heterochromatin/SL2.50ch12___________000031525904_000060809985_000000000001_000031575904_000031625904.seq
    #           2 begin   31,625,904 end   31,675,904 size       50,000 total   67,145,203 file data/Heterochromatin/SL2.50ch12___________000031525904_000060809985_000000000002_000031625904_000031675904.seq
@@ -16065,7 +16065,7 @@ Chrom SL2.50ch12 Length   67,145,203 *
    #         583 begin   60,675,904 end   60,725,904 size       50,000 total   67,145,203 file data/Heterochromatin/SL2.50ch12___________000031525904_000060809985_000000000583_000060675904_000060725904.seq
    #         584 begin   60,725,904 end   60,775,904 size       50,000 total   67,145,203 file data/Heterochromatin/SL2.50ch12___________000031525904_000060809985_000000000584_000060725904_000060775904.seq
  Start   60,809,985 End   67,145,203 Size    6,335,218 Blocks       35,218 Class Euchromatin          *
-  out path data/Euchromatin seq name SL2.50ch12___________000060809985_000067145203
+  class Euchromatin seq name SL2.50ch12___________000060809985_000067145203
    #           0 begin   60,809,985 end   60,859,985 size       50,000 total   67,145,203 file data/Euchromatin/SL2.50ch12___________000060809985_000067145203_000000000000_000060809985_000060859985.seq
    #           1 begin   60,859,985 end   60,909,985 size       50,000 total   67,145,203 file data/Euchromatin/SL2.50ch12___________000060809985_000067145203_000000000001_000060859985_000060909985.seq
    #           2 begin   60,909,985 end   60,959,985 size       50,000 total   67,145,203 file data/Euchromatin/SL2.50ch12___________000060809985_000067145203_000000000002_000060909985_000060959985.seq
@@ -16258,3 +16258,4 @@ Stats
     SL2.50ch10          :       33,965
     SL2.50ch11          :       23,125
     SL2.50ch12          :       72,274
+printing CSV data/files.csv
