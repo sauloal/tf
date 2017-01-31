@@ -124,8 +124,9 @@ def parseSeq(seqName, seq, gff, stats, filenames, block_size=DEFAULT_BLOCK_SIZE,
 						if not os.path.exists(subdir):
 							os.makedirs(subdir)
 						print "   #{:12,d} begin {:12,d} end {:12,d} size {:12,d} total {:12,d} file {}".format(bn, s, e, l, total, outfile)
-						filenames.append((filename, cls))
-						open(outfile, 'w').write(toOneHot(frag))
+						filenames.append( (filename, cls) )
+						with open(outfile, 'w') as fhd:
+						    fhd.write(toOneHot(frag))
 				#break
 
 def toOneHot(frag):
