@@ -157,12 +157,12 @@ with tf.Graph().as_default():
         # Train Summaries
         train_summary_op     = tf.summary.merge([loss_summary, acc_summary, grad_summaries_merged])
         train_summary_dir    = os.path.join(out_dir, "summaries", "train")
-        train_summary_writer = tf.train.SummaryWriter(train_summary_dir, sess.graph)
+        train_summary_writer = tf.summary.FileWriter(train_summary_dir, sess.graph)
 
         # Dev summaries
         dev_summary_op     = tf.summary.merge([loss_summary, acc_summary])
         dev_summary_dir    = os.path.join(out_dir, "summaries", "dev")
-        dev_summary_writer = tf.train.SummaryWriter(dev_summary_dir, sess.graph)
+        dev_summary_writer = tf.summary.FileWriter(dev_summary_dir, sess.graph)
 
         # Checkpoint directory. Tensorflow assumes this directory already exists so we need to create it
         checkpoint_dir    = os.path.abspath(os.path.join(out_dir, "checkpoints"))
