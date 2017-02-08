@@ -19,7 +19,7 @@ def read_genome(filename):
   sh  = splitter.sequenceHandler(filename)
   seq = sh.read()
   shd = sh.asDict()
-  
+
   # Convert from a string to a vector of uint8 that is record_bytes long.
   # record = tf.decode_raw( seq, tf.uint8 )
   # record = seq
@@ -39,6 +39,7 @@ def load_data_and_labels(data_dir, positive_data_file, negative_data_file, test_
 
     # Load data from files
 
+    cfg = None
     all_examples            = []
     positive_data_file_name = os.path.join(data_dir, positive_data_file)
     print "reading", positive_data_file_name
@@ -46,29 +47,39 @@ def load_data_and_labels(data_dir, positive_data_file, negative_data_file, test_
         for pfn in fhd:
             pff, pfc = pfn.strip().split(",")
             pff_name = os.path.join(data_dir, pff)
-            all_examples.append( read_genome(pff_name) )
+            pfd      = read_genome(pff_name)
+            if cfg is None:
+                cfg = pfd[2]
+            all_examples.append( pfd )
 
     negative_data_file_name = os.path.join(data_dir, negative_data_file)
     print "reading", negative_data_file_name
     with open(negative_data_file_name, "r") as fhd:
         for nfn in fhd:
-            nff, pfc           = nfn.strip().split(",")
+            nff, pfc = nfn.strip().split(",")
             nff_name = os.path.join(data_dir, nff)
-            all_examples.append( read_genome(nff_name) )
+            nfd      = read_genome(nff_name)
+            all_examples.append( nfd )
 
     random.shuffle( all_examples )
 
     print "total number of sequences {:12,d}".format( len(all_examples) )
-    
+
     train_len    = int(len(all_examples) * (1.0-test_freq))
+    test_len     = len(all_examples) - train_len
 
     print "training sequences        {:12,d}".format( train_len )
-    print "test     sequences        {:12,d}".format( len(all_examples) - train_len )
+    print "test     sequences        {:12,d}".format( test_len  )
 
-    return (([x[0] for x in all_examples[:train_len]],
+    cfg['train_len'] = train_len
+    cfg['test_len' ] = test_len
+
+    return (cfg,
+            ([x[0] for x in all_examples[:train_len]],
              [x[1] for x in all_examples[:train_len]]),
             ([x[0] for x in all_examples[train_len:]],
-             [x[1] for x in all_examples[train_len:]]))
+             [x[1] for x in all_examples[train_len:]])
+           )
 
 
 def batch_iter(data, batch_size, num_epochs, shuffle=True):
