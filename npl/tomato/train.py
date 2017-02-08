@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python
 #https://github.com/dennybritz/cnn-text-classification-tf/blob/master/train.py
 
 import tensorflow as tf
@@ -60,58 +60,62 @@ else:
 	# Load data
 	print("Loading raw data...")
 	x_text, y = data_helpers.load_data_and_labels(FLAGS.data_dir, FLAGS.positive_data_file, FLAGS.negative_data_file)
-	print "text line", len(x_text)
-	print "labels   ", len(y)
+	print("text line", len(x_text))
+	print("labels   ", len(y     ))
 	x = np.array(list(x_text))
 
 	if True:
 		# Build vocabulary
-		print "Building vocabulary"
+		print("Building vocabulary")
 		vocab               = os.path.join(FLAGS.data_dir, 'vocab')
 		max_document_length = max([len(x) for x in x_text])
 		vocab_processor     = learn.preprocessing.VocabularyProcessor(max_document_length)
 
 		if os.path.exists(vocab):
-			print " Loading vocabulary"
+			print(" Loading vocabulary")
 			vocab_processor.restore(vocab)
 		else:
-			print " Creating vocabulary"
+			print(" Creating vocabulary")
 			vocab_processor.fit(x_text)
 			vocab_processor.save(vocab)
 
-		print "Transforming vocabulary"
+		print("Transforming vocabulary")
 		x = np.array(list(vocab_processor.transform(x_text)))
-		print "X", x.shape
-		#print "Saving to db"
-		#np.save(open(db+'.tmp', 'wb'), x)
-		#os.rename(   db+'.tmp', db)
+		print("X", x.shape)
+		try:
+			print("Saving to db")
+			np.save(open(db+'.tmp', 'wb'), x)
+			os.rename(   db+'.tmp', db)
+		except:
+			pass
 
 
 # Randomly shuffle data
-print "Randomly shuffling data"
+print("Randomly shuffling data")
 np.random.seed(10)
 shuffle_indices = np.random.permutation(np.arange(len(y)))
 x_shuffled      = x[shuffle_indices]
 y_shuffled      = y[shuffle_indices]
-print "x", x.shape
-print "y", y.shape
+print("x", x.shape)
+print("y", y.shape)
 
 
 # Split train/test set
 # TODO: This is very crude, should use cross-validation
-print "Split train/test set"
+print("Split train/test set")
 dev_sample_index = -1 * int(FLAGS.dev_sample_percentage * float(len(y)))
 x_train, x_dev   = x_shuffled[:dev_sample_index], x_shuffled[dev_sample_index:]
 y_train, y_dev   = y_shuffled[:dev_sample_index], y_shuffled[dev_sample_index:]
 #print("Vocabulary Size: {:d}"     .format(len(vocab_processor.vocabulary_)))
 print("Vocabulary Size: {:d}"     .format(FLAGS.vocab_size))
 print("Train/Dev split: {:d}/{:d}".format(len(y_train), len(y_dev)))
-print "x_train", x_train.shape
-print "y_train", y_train.shape
+print("x_train", x_train.shape)
+print("y_train", y_train.shape)
 
 # Training
 # ==================================================
 
+print("Training")
 with tf.Graph().as_default():
     session_conf = tf.ConfigProto(
       allow_soft_placement=FLAGS.allow_soft_placement,
