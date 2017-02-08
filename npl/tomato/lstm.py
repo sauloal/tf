@@ -28,12 +28,9 @@ from tflearn.data_utils import to_categorical, pad_sequences
 
 import data_helpers
 
-INPUT_DATA_DIM    = 50000
-MAX_SEQ_LEN       = 10000
 RATE              =     0.001
-INPUT_DIM         = 10000
 OUTPUT_DIM        =   128
-BATCH_SIZE        =    32
+BATCH_SIZE        =    50
 DROPOUT           =     0.8
 VERBOSE           =     0
 OPTIMIZER         = 'adam'
@@ -49,14 +46,44 @@ def run(data_dir, positive_data_file, negative_data_file, test_freq=0.2):
 
     cfg, (trainX, trainY), (testX , testY) = data_helpers.load_data_and_labels(data_dir, positive_data_file, negative_data_file, test_freq=0.2)
 
-    #{'test_len': 3204, 'seg_end': 5125550, 'seqName': u'SL2.50ch01', 'end': 50001, 'ctime': u'Wed Feb  8 22:27:55 2017', 'seg_start': 1, 'seg_serial': 0, 'blockSize': 50000, 'start': 1, 'host': u'assembly', 'version': u'1.0', 'group': u'Euchromatin', 'serial': 1, 'train_len': 12816, 'groupId': 0, 'inputFile': u'/home/aflit001/dev/tf/npl/tomato/S_lycopersicum_chromosomes.2.50.fa'}
+    #{'test_len': 3204, 'train_len': 12816,
+    #'seg_end': 5125550, 'seqName': u'SL2.50ch01',
+    #'end': 50001, 'ctime': u'Wed Feb  8 22:27:55 2017',
+    #'seg_start': 1, 'seg_serial': 0, 'blockSize': 50000,
+    #'start': 1, 'host': u'assembly', 'version': u'1.0',
+    #'group': u'Euchromatin', 'serial': 1, 
+    #'groupId': 0,
+    #'inputFile': u'/home/aflit001/dev/tf/npl/tomato/S_lycopersicum_chromosomes.2.50.fa'}
+    #
     #print cfg
     #quit()
+
+    INPUT_DATA_DIM    = cfg['blockSize']
+    INPUT_DIM         = INPUT_DATA_DIM
+
+    print "training sequences        {:12,d}".format( len(trainX) )
+    print "test     sequences        {:12,d}".format( len(testX)  )
+
+    if len(trainX) % BATCH_SIZE != 0:
+        d = len(trainX) % BATCH_SIZE
+        print "correcting train size {:12,d} to match batch size {:12,d} by {:12,d}".format(len(trainX), BATCH_SIZE, d)
+        trainX = trainX[:-d]
+        trainY = trainY[:-d]
+
+    if len(testX) % BATCH_SIZE != 0:
+        d = len(testX) % BATCH_SIZE
+        print "correcting test  size {:12,d} to match batch size {:12,d} by {:12,d}".format(len(testX ), BATCH_SIZE, d)
+        testX = testX[:-d]
+        testY = testY[:-d]
+
+    print "training sequences        {:12,d}".format( len(trainX) )
+    print "test     sequences        {:12,d}".format( len(testX)  )
 
     # Converting labels to binary vectors
     NUMBER_OF_CLASSES = len(set(trainY) | set(testY))
     #trainY = to_categorical(trainY, nb_classes=NUMBER_OF_CLASSES)
     #testY  = to_categorical(testY , nb_classes=NUMBER_OF_CLASSES)
+    print "number of classes", NUMBER_OF_CLASSES
 
     print "generating input"
     sys.stdout.flush()
