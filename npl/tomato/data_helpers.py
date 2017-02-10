@@ -11,6 +11,10 @@ import tensorflow as tf
 
 import splitter
 
+
+DEBUG = True
+
+
 def read_genome(filename):
   # Dimensions of the images in the GENOME dataset.
   # See http://www.cs.toronto.edu/~kriz/cifar.html for a description of the
@@ -40,12 +44,12 @@ def load_data_and_labels(data_dir, positive_data_file, negative_data_file, test_
     # Load data from files
 
     cfg = None
-    
+
     positive_examples       = []
     positive_data_file_name = os.path.join(data_dir, positive_data_file)
     print "reading", positive_data_file_name
     with open(positive_data_file_name, "r") as fhd:
-        for pfn in fhd:
+        for pi, pfn in enumerate(fhd):
             pff, pfc = pfn.strip().split(",")
             pff_name = os.path.join(data_dir, pff)
             pfd      = read_genome(pff_name)
@@ -53,15 +57,21 @@ def load_data_and_labels(data_dir, positive_data_file, negative_data_file, test_
                 cfg = pfd[2]
             positive_examples.append( pfd )
 
+            if DEBUG and pi == 1000:
+                break
+
     negative_examples       = []
     negative_data_file_name = os.path.join(data_dir, negative_data_file)
     print "reading", negative_data_file_name
     with open(negative_data_file_name, "r") as fhd:
-        for nfn in fhd:
+        for pi, nfn in enumerate(fhd):
             nff, pfc = nfn.strip().split(",")
             nff_name = os.path.join(data_dir, nff)
             nfd      = read_genome(nff_name)
             negative_examples.append( nfd )
+
+            if DEBUG and pi == 1000:
+                break
 
     lpe = len(positive_examples)
     lne = len(negative_examples)
@@ -72,7 +82,7 @@ def load_data_and_labels(data_dir, positive_data_file, negative_data_file, test_
       else:
         negative_examples = negative_examples[:lpe]
 
-    all_examples            = positive_examples + negative_examples
+    all_examples          = positive_examples + negative_examples
 
     del positive_examples
     del negative_examples
