@@ -31,6 +31,17 @@ replacer = {
 	't': chr(int(math.pow(2, 7))),
 }
 
+rcer = {
+	'A': 'T',
+	'a': 'T',
+	'C': 'G',
+	'c': 'G',
+	'G': 'C',
+	'g': 'C',
+	'T': 'A',
+	't': 'A',
+}
+
 #print replacer
 #print [(k,ord(r)) for k, r in replacer.iteritems()]
 #quit()
@@ -88,11 +99,11 @@ def paseFasta(inFas, gff, blockSize=DEFAULT_BLOCKSIZE, out_dir=DEFAULT_OUT_DIR):
 
 
 	outs = {
-		"all": [ os.path.join(out_dir, "files.csv"), None ]
+		"all": [ os.path.join(out_dir, "files_{}.csv".format(os.path.basename(inFas))), None ]
 	}
 
 	for cls in stats['by_class']:
-		outs[ cls ] = [ os.path.join(out_dir, "files_"+cls+".csv"), None ]
+		outs[ cls ] = [ os.path.join(out_dir, "files_{}_{}.csv".format(os.path.basename(inFas),cls)), None ]
 
 	for cls, (fn, n) in outs.iteritems():
 		print "printing CSV {} for class {}".format(fn, cls)
@@ -105,16 +116,21 @@ def paseFasta(inFas, gff, blockSize=DEFAULT_BLOCKSIZE, out_dir=DEFAULT_OUT_DIR):
 	for cls in outs:
 		outs[ cls ][1].close()
 
+def rc(seq):
+	return "".join([rcer.get(s, 'N') for s in reversed(seq)])
+
 def parseSeq(inputFile, seqName, seq, gff, stats, filenames, blockSize=DEFAULT_BLOCKSIZE, out_dir=DEFAULT_OUT_DIR):
 	if seqName is None: return
 	if seq     is None: return
 	if len(seq) == 0: return
 
-	seq   = "".join(seq)
-	total = len(seq)
+	output_dir = os.path.join(out_dir, os.path.basename(inputFile))
 
-	if not os.path.exists(out_dir):
-		os.makedirs(out_dir)
+	seq        = "".join(seq)
+	total      = len(seq)
+
+	if not os.path.exists(output_dir):
+		os.makedirs(output_dir)
 
 	print "Chrom {} Length {:12,d}".format(seqName, len(seq)), ("*" if seqName in gff else "")
 	ser = 0
@@ -129,33 +145,45 @@ def parseSeq(inputFile, seqName, seq, gff, stats, filenames, blockSize=DEFAULT_B
 				stats['by_class'][cls][seqName] += num_blocks
 				out_base_name = ("{:_<"+str(NAME_PADDING_LEN)+"s}_{:012d}_{:012d}").format(seqName, start, end)
 				print "  class {} seq name {}".format( cls, out_base_name )
-				for bn, s in enumerate(xrange(start, end, blockSize)):
+				for bn, s in enumerate(xrange(start, end, blockSize / 2)):
 					e    = s + blockSize
 					l    = e - s
 					if e <= end:
 						frag      = seq[s:e]
 						assert len(frag) == blockSize
-						basename  = "{}_{:012d}_{:012d}_{:012d}.seq".format( out_base_name, bn, s, e )
-						subdir    = os.path.join(out_dir, cls     )
-						filename  = os.path.join(cls    , basename)
-						outfile   = os.path.join(subdir , basename)
-						ser      += 1
-						if not os.path.exists(subdir):
-							os.makedirs(subdir)
-						print "   #{:12,d} begin {:12,d} end {:12,d} size {:12,d} total {:12,d} file {}".format(bn, s, e, l, total, outfile)
-						filenames.append((filename, cls))
-						sequenceHandler(outfile, inputFile=inputFile, blockSize=blockSize, seqName=seqName, serial=ser, seg_serial=bn, seg_start=start, seg_end=end, start=s, end=e, group=cls).write(toOneHot(frag))
+
+						for ext, piece in (('fwd',frag), ('rev',rc(frag))):
+							basename  = "{}_{:012d}_{:012d}_{:012d}_{}.seq".format( out_base_name, bn, s, e, ext )
+							subdir    = os.path.join(output_dir                 , cls     )
+							filename  = os.path.join(os.path.basename(inputFile), cls       , basename)
+							outfile   = os.path.join(subdir                     , basename)
+							ser      += 1
+							if not os.path.exists(subdir):
+								os.makedirs(subdir)
+							print "   #{:12,d} begin {:12,d} end {:12,d} size {:12,d} total {:12,d} file {}".format(bn, s, e, l, total, outfile)
+							filenames.append((filename, cls))
+							sequenceHandler(outfile   ,
+									inputFile  = inputFile,
+									blockSize  = blockSize,
+									seqName    = seqName  ,
+									serial     = ser      ,
+									seg_serial = bn       ,
+									seg_start  = start    ,
+									seg_end    = end      ,
+									start      = s        ,
+									end        = e        ,
+									group      = cls).write(toOneHot(frag ))
 				#break
 				pass
 
 class group_id_generator(object):
 	def __init__(self):
 		self.dic = OrderedDict()
-	
+
 	def __getitem__(self, key):
 		if   key is None:
 			return None
-		
+
 		elif key not in self.dic:
 			self.dic[key] = len(self.dic)
 
@@ -203,20 +231,20 @@ class sequenceHandler(object):
 
 	def asDict(self):
 		return dict([(k,getattr(self, k)) for k in self.keys])
-	
+
 	def _updateDict(self, msg):
 		for k in self.keys:
 			setattr(self, k, msg[k])
-		
+
 		if self.groupId is None:
 			self.groupId = gid(self.group)
 
 	def write(self, frag):
 		if self.verbose:
 			print "writing", self.dbFile
-			
+
 		assert self.blockSize == len(frag)
-		
+
 		with open(self.dbFile, 'wb') as fhd:
 			fhd.write(frag)
 
@@ -228,19 +256,19 @@ class sequenceHandler(object):
 
 	def read(self):
 		frag = None
-		
+
 		if self.verbose:
 			print "reading", self.dbFile
-			
+
 		with open(self.dbFile + '.json', 'rb') as fhd:
 			self._readHeader(fhd)
 
 		with open(self.dbFile, 'rb') as fhd:
 			frag = fhd.read()
 			assert self.blockSize == len(frag)
-		
+
 		return frag
-			
+
 	def _genHeader(self, fhd):
 		msg     = self.asDict()
 		j       = json.dumps(msg, separators=(',',':'), indent=None, sort_keys=True)
@@ -248,29 +276,29 @@ class sequenceHandler(object):
 		# txt     = struct.pack('Q', msgLen)
 		# txt    += j
 		txt    = j
-		
+
 		if self.verbose:
 			print "saving header", j
-		
+
 		fhd.write(txt)
-	
+
 	def _readHeader(self, fhd):
 		# msgLen  = struct.unpack('Q', fhd.read(8))[0]
-		
+
 		#print "msgLen", msgLen
-		
+
 		# j       = fhd.read(msgLen)
 		j       = fhd.read()
-		
+
 		#print "J", j
-		
+
 		msg     = json.loads(j)
-		
+
 		if self.verbose:
 			print "loaded header", j
 
 		self._updateDict(msg)
-		
+
 		assert self.version == __VERSION__
 
 def toOneHot(frag):

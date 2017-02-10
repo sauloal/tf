@@ -81,7 +81,7 @@ def read_genome(filename_queue):
   # The first bytes represent the label, which we convert from uint8->int32.
   result.label  = tf.cast( result.seqId, tf.int32 )
 
-  return result  
+  return result
 
 def _generate_image_and_label_batch(image, label, min_queue_examples,
                                     batch_size, shuffle):

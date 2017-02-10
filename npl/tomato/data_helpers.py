@@ -40,7 +40,8 @@ def load_data_and_labels(data_dir, positive_data_file, negative_data_file, test_
     # Load data from files
 
     cfg = None
-    all_examples            = []
+    
+    positive_examples       = []
     positive_data_file_name = os.path.join(data_dir, positive_data_file)
     print "reading", positive_data_file_name
     with open(positive_data_file_name, "r") as fhd:
@@ -50,8 +51,9 @@ def load_data_and_labels(data_dir, positive_data_file, negative_data_file, test_
             pfd      = read_genome(pff_name)
             if cfg is None:
                 cfg = pfd[2]
-            all_examples.append( pfd )
+            positive_examples.append( pfd )
 
+    negative_examples       = []
     negative_data_file_name = os.path.join(data_dir, negative_data_file)
     print "reading", negative_data_file_name
     with open(negative_data_file_name, "r") as fhd:
@@ -59,14 +61,30 @@ def load_data_and_labels(data_dir, positive_data_file, negative_data_file, test_
             nff, pfc = nfn.strip().split(",")
             nff_name = os.path.join(data_dir, nff)
             nfd      = read_genome(nff_name)
-            all_examples.append( nfd )
+            negative_examples.append( nfd )
+
+    lpe = len(positive_examples)
+    lne = len(negative_examples)
+
+    if lpe != lne:
+      if lpe > lne:
+        positive_examples = positive_examples[:lne]
+      else:
+        negative_examples = negative_examples[:lpe]
+
+    all_examples            = positive_examples + negative_examples
+
+    del positive_examples
+    del negative_examples
 
     random.shuffle( all_examples )
 
-    print "total number of sequences {:12,d}".format( len(all_examples) )
+    lae = len(all_examples)
 
-    train_len    = int(len(all_examples) * (1.0-test_freq))
-    test_len     = len(all_examples) - train_len
+    print "total number of sequences {:12,d}".format( lae )
+
+    train_len    = int(lae * (1.0-test_freq))
+    test_len     =     lae - train_len
 
     print "training sequences        {:12,d}".format( train_len )
     print "test     sequences        {:12,d}".format( test_len  )
@@ -97,6 +115,6 @@ def batch_iter(data, batch_size, num_epochs, shuffle=True):
         else:
             shuffled_data   = data
         for batch_num in range(num_batches_per_epoch):
-            start_index = batch_num * batch_size
-            end_index   = min((batch_num + 1) * batch_size, data_size)
+            start_index     = batch_num * batch_size
+            end_index       = min((batch_num + 1) * batch_size, data_size)
             yield shuffled_data[start_index:end_index]

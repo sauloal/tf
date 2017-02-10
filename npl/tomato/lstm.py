@@ -21,6 +21,8 @@ Links:
 # from __future__ import division, print_function, absolute_import
 
 import sys
+import math
+import time
 
 import tflearn
 from tflearn.data_utils import to_categorical, pad_sequences
@@ -28,20 +30,23 @@ from tflearn.data_utils import to_categorical, pad_sequences
 
 import data_helpers
 
-RATE              =     0.001
+POWER             =     2.5
+RATE              =     0.005
 OUTPUT_DIM        =   128
 BATCH_SIZE        =    50
 DROPOUT           =     0.8
-VERBOSE           =     0
+VERBOSE           =     3
+NUM_EPOCHS        =    10
 OPTIMIZER         = 'adam'
-ACTIVATION        = 'softmax'
+ACTIVATION        = 'relu'
+ACTIVATION_LAST   = 'softmax'
 LOSS              = 'categorical_crossentropy'
 
 # IMDB Dataset loading
 # train, test, _ = imdb.load_data(path='imdb.pkl', n_words=10000,
 #                                 valid_portion=0.1)
 
-def run(data_dir, positive_data_file, negative_data_file, test_freq=0.2):
+def run(data_dir, positive_data_file, negative_data_file, test_freq=0.1):
     print "data {} positive {} negative {}".format( data_dir, positive_data_file, negative_data_file )
 
     cfg, (trainX, trainY), (testX , testY) = data_helpers.load_data_and_labels(data_dir, positive_data_file, negative_data_file, test_freq=0.2)
@@ -51,7 +56,7 @@ def run(data_dir, positive_data_file, negative_data_file, test_freq=0.2):
     #'end': 50001, 'ctime': u'Wed Feb  8 22:27:55 2017',
     #'seg_start': 1, 'seg_serial': 0, 'blockSize': 50000,
     #'start': 1, 'host': u'assembly', 'version': u'1.0',
-    #'group': u'Euchromatin', 'serial': 1, 
+    #'group': u'Euchromatin', 'serial': 1,
     #'groupId': 0,
     #'inputFile': u'/home/aflit001/dev/tf/npl/tomato/S_lycopersicum_chromosomes.2.50.fa'}
     #
@@ -62,7 +67,7 @@ def run(data_dir, positive_data_file, negative_data_file, test_freq=0.2):
     INPUT_DIM         = INPUT_DATA_DIM
 
     print "training sequences        {:12,d}".format( len(trainX) )
-    print "test     sequences        {:12,d}".format( len(testX)  )
+    print "test     sequences        {:12,d}".format( len(testX ) )
 
     if len(trainX) % BATCH_SIZE != 0:
         d = len(trainX) % BATCH_SIZE
@@ -81,9 +86,9 @@ def run(data_dir, positive_data_file, negative_data_file, test_freq=0.2):
 
     # Converting labels to binary vectors
     NUMBER_OF_CLASSES = len(set(trainY) | set(testY))
-    #trainY = to_categorical(trainY, nb_classes=NUMBER_OF_CLASSES)
-    #testY  = to_categorical(testY , nb_classes=NUMBER_OF_CLASSES)
     print "number of classes", NUMBER_OF_CLASSES
+    trainY            = to_categorical(trainY, nb_classes=NUMBER_OF_CLASSES)
+    testY             = to_categorical(testY , nb_classes=NUMBER_OF_CLASSES)
 
     print "generating input"
     sys.stdout.flush()
@@ -91,20 +96,29 @@ def run(data_dir, positive_data_file, negative_data_file, test_freq=0.2):
     # Network building
     net = tflearn.input_data([None, INPUT_DATA_DIM])
 
-    print "embedding"
-    sys.stdout.flush()
-
-    net = tflearn.embedding(      net, input_dim=INPUT_DIM, output_dim=OUTPUT_DIM)
-
-    print "creating lstm"
-    sys.stdout.flush()
-
-    net = tflearn.lstm(           net, OUTPUT_DIM, dropout=DROPOUT)
-
     print "connecting"
     sys.stdout.flush()
 
-    net = tflearn.fully_connected(net, NUMBER_OF_CLASSES, activation=ACTIVATION)
+
+
+
+    min_l=int(math.log(NUMBER_OF_CLASSES*2   , POWER) + 3)
+    max_l=int(math.log(INPUT_DATA_DIM / POWER, POWER) + 1)
+
+    print "power {} classes {} dim {} min_l {} max_l {}".format( POWER, NUMBER_OF_CLASSES, INPUT_DATA_DIM, min_l, max_l )
+
+    for p,l in enumerate(xrange(max_l, min_l, -1)):
+        n = int(POWER**l)
+
+        print " Layer #{:12,d}: power {:12,d} size {:12,d}".format(p, l, n)
+
+        net = tflearn.fully_connected(net, n, activation=ACTIVATION)
+        net = tflearn.dropout(net, DROPOUT)
+
+
+
+
+    net = tflearn.fully_connected(net, NUMBER_OF_CLASSES, activation=ACTIVATION_LAST)
 
     print "running regression"
     sys.stdout.flush()
@@ -116,8 +130,18 @@ def run(data_dir, positive_data_file, negative_data_file, test_freq=0.2):
     print "training"
     sys.stdout.flush()
 
+
     model = tflearn.DNN(net, tensorboard_verbose=VERBOSE)
-    model.fit(trainX, trainY, validation_set=(testX, testY), show_metric=True, batch_size=BATCH_SIZE)
+    model.fit(trainX, trainY,
+        validation_set = (testX, testY),
+        show_metric    = True          ,
+        n_epoch        = NUM_EPOCHS    ,
+        shuffle        = True          ,
+        batch_size     = BATCH_SIZE)
+
+    outf  = 'my_model{:.0f}.tflearn'.format(time.time())
+    print "saving model to {}".format(outf)
+    model.save(outf)
 
     print "DONE"
     sys.stdout.flush()
@@ -125,7 +149,7 @@ def run(data_dir, positive_data_file, negative_data_file, test_freq=0.2):
 
 def main():
     data_dir, positive_data_file, negative_data_file = sys.argv[1:]
-    
+
     run(data_dir, positive_data_file, negative_data_file, test_freq=0.2)
 
 if __name__ == '__main__':
